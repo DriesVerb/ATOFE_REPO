@@ -1,6 +1,9 @@
 import { Link } from 'wouter'
+import { useAuthStore } from '#/store/auth'
 
 export const Header = () => {
+  const loggedIn = useAuthStore((state) => state.loggedIn)
+
   return (
     <div className="mb-2 navbar bg-primary rounded-b-lg">
       <div className="navbar-start">
@@ -21,25 +24,35 @@ export const Header = () => {
               />
             </svg>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/login">Login</Link>
-            </li>
-            <li>
-              <Link href="/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link href="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link href="/logout">Logout</Link>
-            </li>
+            <>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+            </>
+            {loggedIn ? (
+              <>
+                <li>
+                  <Link href="/profile">Profile</Link>
+                </li>
+                <li>
+                  <Link href="/logout">Logout</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link href="/login">Login</Link>
+                </li>
+                <li>
+                  <Link href="/signup">Sign Up</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

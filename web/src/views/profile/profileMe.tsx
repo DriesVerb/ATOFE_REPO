@@ -8,11 +8,13 @@ export const ProfileMe = () => {
   
   const { data, isLoading } = useGetProfileMe()
 
-  if (isLoading) <div>loading</div>
+  if (isLoading) return <div>loading</div>
 
-  const profile = data.profile
+  console.log(data)
 
-  if (!profile) <div>error</div>
+  const profile = data?.profile
+
+  if (!profile || profile === undefined) return <div>error</div>
 
   const { avatar, avatarBg, bio } = profile
 
