@@ -5,7 +5,7 @@ interface BasicProps {
   text: string
   type?: 'submit' | 'button' | 'reset'
   ngclass?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void
   variant?: string
 }
 

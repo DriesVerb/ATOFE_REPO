@@ -6,17 +6,19 @@ import { ProfileMeRoute } from './profile/profileMe'
 import { LogoutRoute } from './auth/logout'
 import { ProfileUpdateRoute } from './profile/profileUpdate'
 import { ProfileUsernameRouter } from './profile/profileUsername'
+import { StoryCreateRoute } from './story/storyCreate'
 
 export const MainRouter = () => {
   return (
     <Router>
-      <SignUpRoute />
+      <BaseRoute />
       <LoginRoute />
+      <SignUpRoute />
       <LogoutRoute />
       <ProfileMeRoute />
       <ProfileUpdateRoute />
       <ProfileUsernameRouter />
-      <BaseRoute />
+      <StoryCreateRoute />
     </Router>
   )
 }
