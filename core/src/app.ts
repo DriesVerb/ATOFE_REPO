@@ -1,8 +1,8 @@
 import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import * as emoji from './api/handlers/emoji'
 
-import { placeHolder } from './api/handlers/placeholder'
 import { frontendPort } from './utils/dotenv'
 
 dotenv.config()
@@ -10,7 +10,7 @@ dotenv.config()
 export const app: Application = express()
 
 const publicRouter = express.Router()
-publicRouter.get('/v1/placeholder', placeHolder)
+publicRouter.get('/v1/emoji/random/5', emoji.list5)
 
 app.use(
   cors({
