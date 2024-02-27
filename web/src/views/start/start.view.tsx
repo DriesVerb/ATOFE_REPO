@@ -1,4 +1,3 @@
-
 export const StartView = () => {
   return (
     <div>

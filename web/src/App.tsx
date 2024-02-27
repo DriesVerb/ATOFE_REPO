@@ -1,11 +1,16 @@
-import { Basic } from "./elements/button/basic"
+import { EmojiRow } from "./components/emojiRow/emojiRow"
+import { emojiTestList } from "./testData/emojis"
 import { StartView } from "./views/start/start.view"
 
+
+
+
 function App() {
+
   return (
     <>
+      <EmojiRow emojis={emojiTestList}/>
       <StartView />
-      <Basic />
       <div>Hello</div>
     </>
   )
