@@ -10,11 +10,11 @@ export type Emoji = {
   variants?: Variant[] | undefined
 }
 
-export type EmojiWithVariant = Emoji & { variants: Variant[]}
+export type EmojiWithVariant = Emoji & { variants: Variant[] }
 
 export type Variant = {
   slug: string
   character: string
 }
 
-
+ 

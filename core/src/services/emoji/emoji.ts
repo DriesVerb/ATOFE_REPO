@@ -1,25 +1,15 @@
-import { emojiData } from '../../testData/emoji.data'
-import {  EmojiWithVariant } from '../../types/emoji/emoji.type'
+import { characterData } from '../../testData/emoji.data'
 
-const squashVariants = (output: EmojiWithVariant) => {
-  console.log(output)
-  return "variant"
-}
-
-export const getFiveRandom = () => {
-  const array = emojiData
+export const getRandomNumChar = (number: number) => {
+  const characters = characterData
   const emojiOutput = new Set()
 
-  while (emojiOutput.size < 5) {
-    const randomNum = Math.trunc(Math.random() * array.length)
+  while (emojiOutput.size < number) {
+    const randomNum = Math.trunc(Math.random() * characters.length)
 
-    const currentOutput = array[randomNum]
+    const currentOutput = characters[randomNum]
 
-    if ('variants' in currentOutput) {
-      emojiOutput.add(squashVariants(currentOutput as EmojiWithVariant))
-    } else {
-      emojiOutput.add(currentOutput)
-    }
+    emojiOutput.add(currentOutput)
   }
 
   return [...emojiOutput]
