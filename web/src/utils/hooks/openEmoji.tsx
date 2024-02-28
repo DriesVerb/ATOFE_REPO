@@ -1,25 +1,23 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const useEmojiSelect = () => {
-
-  const [emojis, setEmojis] = useState()
+  const [emojis, setEmojis] = useState<string[] | undefined>()
   const [loading, setLoading] = useState(false)
-  
-  const fetchEmojis = async () => {
+
+  const fetchEmojis = async (num: number) => {
     setLoading(true)
-
     try {
-      const response = await fetch(`https://emoji-api.com/emojis?access_key=${process.env.EMOJI_KEY}`)
-
-      setEmojis(response)
-
+      const response = await fetch(
+        `http://localhost:3000/public/v1/emoji/random/${num}`
+      )
+      const data = await response.json()
+      setEmojis(data)
     } catch (err) {
       console.log(err)
-      
+    } finally {
+      setLoading(false)
     }
-
-
-
   }
-  
+
+  return { emojis, loading, fetchEmojis }
 }
