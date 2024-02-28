@@ -1,10 +1,10 @@
 import { characterData } from '../../testData/emoji.data'
 
-export const getRandomNumChar = (number: number) => {
+export const getRandomNumChar = (amount: number) => {
   const characters = characterData
   const emojiOutput = new Set()
 
-  while (emojiOutput.size < number) {
+  while (emojiOutput.size < amount) {
     const randomNum = Math.trunc(Math.random() * characters.length)
 
     const currentOutput = characters[randomNum]

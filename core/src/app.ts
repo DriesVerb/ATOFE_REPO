@@ -10,7 +10,7 @@ dotenv.config()
 export const app: Application = express()
 
 const publicRouter = express.Router()
-publicRouter.get('/v1/emoji/random/:number', emoji.list5)
+publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 app.use(
   cors({
