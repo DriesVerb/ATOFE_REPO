@@ -11,8 +11,8 @@ export const EmojiRow = (props: EmojiRowProps) => {
 
   return (
     <div className="emojiRow-list">
-      {emojis.map((emoji) => {
-        return <Emoji code={emoji} />
+      {emojis?.map((emoji, ind) => {
+        return <Emoji key={ind}  code={emoji} />
       })}
     </div>
   )
