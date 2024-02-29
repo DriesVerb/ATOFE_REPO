@@ -6,8 +6,6 @@ export const Emoji = (props: EmojiProps) => {
   const { code } = props
 
   return (
-    <>
-      <span>{code}</span>
-    </>
+      <div className="sm:text-3xl md:text-5xl lg:text-7xl">{code}</div>
   )
 }

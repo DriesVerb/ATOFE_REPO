@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useEmojiSelect } from '#/utils/hooks/openEmoji'
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
+import { ProfileImage } from '#/components/profile/profileImage/profileImage'
 
 export const StartView = () => {
   const { emojis, loading, fetchEmojis } = useEmojiSelect()
@@ -14,6 +15,9 @@ export const StartView = () => {
 
   return (
     <section className="container mx-auto">
+      <div>
+        <ProfileImage />
+      </div>
       <EmojiRow emojis={emojis!} />
       <button onClick={() => fetchEmojis(5)}>renew</button>
     </section>
