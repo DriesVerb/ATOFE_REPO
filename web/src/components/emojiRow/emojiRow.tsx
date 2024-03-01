@@ -4,8 +4,6 @@ interface EmojiRowProps {
   emojis: string[]
 }
 
-import "./emojiRow.css"
-
 export const EmojiRow = (props: EmojiRowProps) => {
   const { emojis } = props
 
