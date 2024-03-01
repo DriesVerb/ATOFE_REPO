@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useEmojiSelect } from '#/utils/hooks/openEmoji'
-import { ProfileImage } from '#/components/profile/profileImage/profileImage'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
 import { Txt } from '#/elements'
+import { MainContainer } from '#/elements/layout/container/container'
 
 export const StartView = () => {
   const { emojis, loading, fetchEmojis } = useEmojiSelect()
@@ -16,13 +16,12 @@ export const StartView = () => {
   if (emojis?.length === 0) <div>ERROR</div>
 
   return (
-    <section className="">
+    <MainContainer>
       <Txt.H1 text="ATOFE"/>
       <Txt.H2 text="slogan heyoo" />
       <Txt.H3 text="a tale of two emojis" />
       <Txt.p>Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</Txt.p>
-      <div className="flex gap-4">
-        <ProfileImage />
+      <div className="flex gap-4 justify-end">
         <Avatar />
       </div>
       <StoryCta
@@ -30,6 +29,6 @@ export const StartView = () => {
         onRenew={() => fetchEmojis(5)}
         onWrite={() => console.log('dries')}
       />
-    </section>
+    </MainContainer>
   )
 }

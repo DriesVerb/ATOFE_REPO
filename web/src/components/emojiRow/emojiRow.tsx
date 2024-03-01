@@ -8,7 +8,7 @@ export const EmojiRow = (props: EmojiRowProps) => {
   const { emojis } = props
 
   return (
-    <div className="w-min flex gap-4 p-4 bg-slate-100 rounded-2xl">
+    <div className="w-min bg-secondary rounded-2xl flex gap-2 p-2 sm:gap-3 sm:p-3 md:p-4">
       {emojis?.map((emoji, ind) => {
         return <Emoji key={ind}  code={emoji} />
       })}

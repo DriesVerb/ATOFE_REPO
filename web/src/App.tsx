@@ -4,12 +4,11 @@ import './index.css'
 
 function App() {
   return (
-    <main className="container mx-auto">
+    <main className="container mx-auto flex flex-col items-center">
       <header className="flex flex-col items-center">
       </header>
       <StartView />
       <footer>
-        <p>test test test</p>
       </footer>
     </main>
   )
