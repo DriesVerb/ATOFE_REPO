@@ -3,7 +3,6 @@ import { useEmojiSelect } from '#/utils/hooks/openEmoji'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
 import { Txt } from '#/elements'
-import { MainContainer } from '#/elements/layout/container/container'
 
 export const StartView = () => {
   const { emojis, loading, fetchEmojis } = useEmojiSelect()
@@ -16,23 +15,19 @@ export const StartView = () => {
   if (emojis?.length === 0) <div>ERROR</div>
 
   return (
-    <MainContainer>
-      <Txt.H1 text="ATOFE" className="bg-red-100 col-span-12 flex justify-center"/>
+    <>
+      <Txt.H1 text="ATOFE" className="col-span-12 flex justify-center"/>
       <Txt.H2 text="slogan heyoo" className="flex justify-center col-span-12"/>
-      <Txt.H3 text="a tale of two emojis" />
-      <button className="btn btn-primary">hello</button>
-      <Txt.p>Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</Txt.p>
+      <Txt.H3 text="a tale of two emojis" className="flex justify-center col-span-12"/>
+      <Txt.p className="col-span-4">Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.</Txt.p>
       <div className="flex gap-4 justify-end">
         <Avatar />
-      </div>
-      <div className="h-30 w-30 bg-secondary">
-        hello
       </div>
       <StoryCta
         emojis={emojis!}
         onRenew={() => fetchEmojis(5)}
         onWrite={() => console.log('dries')}
       />
-    </MainContainer>
+    </>
   )
 }
