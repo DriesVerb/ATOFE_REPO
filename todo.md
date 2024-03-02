@@ -11,3 +11,4 @@ DONE
 
 [x] make profile image component
 [x] set a global layout // with tailwindcss
+[x] routing
