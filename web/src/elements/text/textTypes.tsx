@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 
 interface TextProps {
   text: string
+  className?: string
 }
 
 interface TextChildProps {
@@ -9,21 +10,21 @@ interface TextChildProps {
 }
 
 export const H1 = (props: TextProps) => {
-  const { text } = props
+  const { text, className } = props
 
   return (
     <>
-      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl">{text}</h1>
+      <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-9xl ${className}`}>{text}</h1>
     </>
   )
 }
 
 export const H2 = (props: TextProps) => {
-  const { text } = props
+  const { text, className } = props
 
   return (
     <>
-      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">{text}</h2>
+      <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl ${className}`}>{text}</h2>
     </>
   )
 }
