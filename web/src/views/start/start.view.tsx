@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useEmojiSelect } from '#/utils/hooks/openEmoji'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
@@ -6,10 +5,6 @@ import { Txt } from '#/elements'
 
 export const StartView = () => {
   const { emojis, loading, fetchEmojis } = useEmojiSelect()
-
-  useEffect(() => {
-    fetchEmojis(5)
-  }, [])
 
   if (loading) <div>Loading</div>
   if (emojis?.length === 0) <div>ERROR</div>

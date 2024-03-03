@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useEmojiSelect = () => {
   const [emojis, setEmojis] = useState<string[] | undefined>()
   const [loading, setLoading] = useState(false)
+  
+  useEffect(()=> {
+    fetchEmojis(5)
+  }, [])
 
   const fetchEmojis = async (num: number) => {
     setLoading(true)
