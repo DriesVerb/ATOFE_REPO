@@ -23,8 +23,8 @@ export const StartView = () => {
       />
       <div className="col-span-12 flex flex-col gap-4">
         <Form.Text placeHolder="Name"/>
-        <Form.Text type="password" placeHolder="password"/>
         <Form.Text type="email" placeHolder="name@domain.ext"/>
+        <Form.Text type="password" placeHolder="password"/>
         <Form.Text type="password" placeHolder="repeat password" variant="secondary"/>
       </div>
     </>
