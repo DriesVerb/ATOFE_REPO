@@ -1,13 +1,18 @@
 import { Btn, Form, Txt } from '#/elements'
 
 export const LoginView = () => {
+
+  const handleLogin = (e: React.MouseEvent) => {
+    e.preventDefault()
+  }
+
   return (
-    <div className="h-60 col-start-1 col-end-7 md:col-start-3 md:col-end-9 neutral-content">
+    <div className="h-fit p-2 md:p-4 rounded-2xl col-start-1 col-end-7 sm:col-start-3 sm:col-end-9 bg-neutral-content">
       <Txt.H3 text="login" />
-      <form>
+      <form className="flex flex-col gap-2 p-2">
         <Form.Text placeholdertext="Username" />
         <Form.Text placeholdertext="Password" type="password" />
-        <Btn.Basic text="Log in" onClick={() => console.log("test")} />
+        <Btn.Basic text="Log in" type="submit" onClick={(e) => handleLogin(e)} />
       </form>
     </div>
   )
