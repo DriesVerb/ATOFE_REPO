@@ -1,16 +1,11 @@
-import { Txt } from './elements'
-import { MainContainer } from './elements/layout/container/container'
+import { Footer, Header, MainContainer } from "./elements/layout"
 
 function Entry() {
   return (
-    <main className="container mx-auto">
-      <header>
-        <Txt.H1 text="ATOFE" className="flex justify-center" />
-        <Txt.H2 text="slogan heyoo" className="flex justify-center" />
-        <Txt.H3 text="a tale of two emojis" className="flex justify-center" />
-      </header>
+    <main className="grid grid-col-3">
+      <Header />
       <MainContainer />
-      <footer>footer</footer>
+      <Footer />
     </main>
   )
 }
