@@ -7,7 +7,7 @@ export const LoginView = () => {
 
   return (
     <>
-      <div className="h-fit p-2 md:p-4 rounded-2xl col-start-1 col-end-7 sm:col-start-3 sm:col-end-9 bg-neutral-content">
+      <div className="h-fit p-2 mt-24 md:p-4 rounded-2xl col-start-1 col-end-7 sm:col-start-3 sm:col-end-9 bg-neutral-content">
         <Txt.H3 text="login" />
         <form className="flex flex-col gap-2 p-2">
           <Form.Text placeholdertext="Username" />
@@ -16,7 +16,7 @@ export const LoginView = () => {
             text="Log in"
             type="submit"
             onClick={(e) => handleLogin(e)}
-            className="w-fit"
+            tail="w-fit"
           />
         </form>
       </div>
