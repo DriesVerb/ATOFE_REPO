@@ -4,8 +4,8 @@ import React from 'react'
 interface BasicProps {
   text: string
   type: 'submit' | 'button' | 'reset'
-  tail: string
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  tail?: string
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   variant?: string
 }
 
