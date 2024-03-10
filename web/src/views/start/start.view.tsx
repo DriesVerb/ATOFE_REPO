@@ -1,6 +1,6 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
-import { Form, Txt } from '#/elements'
+import { Txt } from '#/elements'
 import { useGetRanEmojis } from '#/api/emoji/hooks/query/useGetRanEmoji'
 
 export const StartView = () => {
@@ -31,16 +31,6 @@ export const StartView = () => {
       </Txt.p>
       <div className="flex gap-4 justify-end">
         <Avatar />
-      </div>
-      <div className="flex flex-col gap-4">
-        <Form.Text placeholdertext="Name" />
-        <Form.Text type="email" placeholdertext="name@domain.ext" />
-        <Form.Text type="password" placeholdertext="password" />
-        <Form.Text
-          type="password"
-          placeholdertext="repeat password"
-          variant="secondary"
-        />
       </div>
     </>
   )

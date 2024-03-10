@@ -28,8 +28,8 @@ export const SignUpView = () => {
         <Form.Text
           placeholdertext="Username"
           label="Choose a Username"
-          {...register('username')}
           error={errors.username && (errors.username.message as string)}
+          {...register('username')}
         />
         <Form.Text
           label="What is your Email"
