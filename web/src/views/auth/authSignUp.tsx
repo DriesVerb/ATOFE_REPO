@@ -60,7 +60,7 @@ export const SignUpView = () => {
           type="password"
           {...register('confirmPassword')}
         />
-        <Btn.Basic text="Sign Up" type="submit" tail="w-fit" />
+        <Btn.Basic text="Sign Up" type="submit" classname="w-fit mt-3" />
       </form>
     </AuthContainter>
   )

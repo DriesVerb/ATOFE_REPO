@@ -7,3 +7,11 @@ export const getAllUsers = async (): Promise<user[]> => {
   const users = await prisma.user.findMany()
   return users
 }
+
+export const registerUser = async (body: any) => {
+  const prisma = getPrisma()
+
+  console.log(body)
+
+  return 'working'
+}

@@ -16,7 +16,7 @@ export const LoginView = () => {
             text="Log in"
             type="submit"
             onClick={(e) => handleLogin(e)}
-            tail="w-fit"
+            classname="w-fit"
           />
         </form>
       </AuthContainter>

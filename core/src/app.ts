@@ -12,6 +12,7 @@ export const app: Application = express()
 
 const publicRouter = express.Router()
 publicRouter.get('/v1/users/', user.getAll)
+publicRouter.post('/v1/user/register', user.register)
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 app.use(
