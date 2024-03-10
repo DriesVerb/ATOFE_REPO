@@ -3,7 +3,7 @@ import React from 'react'
 
 interface BasicProps {
   text: string
-  type: 'submit' | 'button' | 'reset'
+  type?: 'submit' | 'button' | 'reset'
   tail?: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   variant?: string
@@ -11,16 +11,14 @@ interface BasicProps {
 
 export const Basic = React.forwardRef<HTMLButtonElement, BasicProps>(
   (props, ref) => {
-    const { text, variant = 'primary', tail } = props
+    const { text, tail, variant = 'primary' } = props
 
-    const classInput = clsx(`btn btn-${variant} text-xs min-h-7 max-h-7 md:text-lg md:min-h-10' ${tail}`)
+    const classInput = clsx(
+      `btn btn-${variant} text-xs min-h-7 max-h-7 md:text-lg md:min-h-10' ${tail}`
+    )
 
     return (
-      <button
-        ref={ref}
-        className={classInput}
-        {...props}
-      >
+      <button ref={ref} className={classInput} {...props}>
         {text}
       </button>
     )

@@ -10,8 +10,14 @@ export const StartView = () => {
 
   return (
     <>
-      <Txt.p className="col-span-4">
-        Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
+      <StoryCta
+        classname="col-span-1 md:col-span-2"
+        emojis={emojis!}
+        onRenew={() => refetch()}
+        onWrite={() => console.log('dries')}
+      />
+      <Txt.p className="col-span-1 md:col-span-2">
+        Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
         exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
         nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor
@@ -23,16 +29,10 @@ export const StartView = () => {
         Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa
         et culpa duis.
       </Txt.p>
-      <div className="flex gap-4 justify-end col-span-1">
+      <div className="flex gap-4 justify-end">
         <Avatar />
       </div>
-      <StoryCta
-        className="col-span-6"
-        emojis={emojis!}
-        onRenew={() => refetch()}
-        onWrite={() => console.log('dries')}
-      />
-      <div className="col-span-12 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <Form.Text placeholdertext="Name" />
         <Form.Text type="email" placeholdertext="name@domain.ext" />
         <Form.Text type="password" placeholdertext="password" />

@@ -2,7 +2,7 @@ import { Link } from 'wouter'
 
 export const Header = () => {
   return (
-    <div className="navbar bg-primary rounded-b-lg">
+    <div className="mb-2 navbar bg-primary rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

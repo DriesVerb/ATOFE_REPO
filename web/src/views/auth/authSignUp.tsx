@@ -1,5 +1,4 @@
 import { Btn, Form, Txt } from '#/elements'
-import { FormEvent } from 'react'
 import { AuthContainter } from './components/authContainer'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
