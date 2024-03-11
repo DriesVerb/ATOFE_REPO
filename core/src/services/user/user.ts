@@ -11,7 +11,22 @@ export const getAllUsers = async (): Promise<user[]> => {
 export const registerUser = async (body: any) => {
   const prisma = getPrisma()
 
-  console.log(body)
+  const { username, password, email } = body
+  
+  /*
+  try {
+    await prisma.user.create({
+      data: {
+        email: email,
+        username: username,
+        password: password,
+      },
+    })
+  } catch (error) {
+    console.log(error)
+  }
+  */
 
-  return 'working'
+
+  return { message: 'Thank You for Registering' }
 }

@@ -2,6 +2,7 @@ import { Btn, Form, Txt } from '#/elements'
 import { AuthContainter } from './components/authContainer'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRegisterUser } from '#/api/user/hooks/mutate/registerUser'
 import { SignUp, signUpSchema } from '#/types/auth'
 
 
@@ -14,8 +15,10 @@ export const SignUpView = () => {
     resolver: zodResolver(signUpSchema),
   })
 
+  const registerUser = useRegisterUser()
+
   const onSubmit = (data: SignUp) => {
-    console.log(data)
+    registerUser.mutate(data)
   }
 
   return (

@@ -9,6 +9,8 @@ import { frontendPort } from './utils/dotenv'
 dotenv.config()
 
 export const app: Application = express()
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 const publicRouter = express.Router()
 publicRouter.get('/v1/users/', user.getAll)
