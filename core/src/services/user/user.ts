@@ -14,6 +14,8 @@ export const registerUser = async (body: any) => {
 
   const { username, password, email } = body
 
+  if (!email) throw new Error("No Email")
+
   try {
     await prisma.user.create({
       data: {
