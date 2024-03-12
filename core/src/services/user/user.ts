@@ -1,5 +1,6 @@
-import { user } from '@prisma/client'
+import { Prisma, user } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
+import { logger } from '../../utils/logger'
 
 export const getAllUsers = async (): Promise<user[]> => {
   const prisma = getPrisma()
@@ -12,8 +13,7 @@ export const registerUser = async (body: any) => {
   const prisma = getPrisma()
 
   const { username, password, email } = body
-  
-  /*
+
   try {
     await prisma.user.create({
       data: {
@@ -23,10 +23,11 @@ export const registerUser = async (body: any) => {
       },
     })
   } catch (error) {
-    console.log(error)
+    if (error instanceof Prisma.PrismaClientValidationError) {
+      logger.error("something went wrong")
+    }
   }
-  */
 
-
+  throw new Error("on to the next one")
   return { message: 'Thank You for Registering' }
 }
