@@ -13,7 +13,7 @@ export const useRegisterUser = () => {
     onError: (error: AxiosError) => {
       const errorData = error.response?.data as MuteError
       const errorMessage = JSON.stringify(errorData.error)
-      console.log(errorMessage)
+      return errorMessage
     },
     onSuccess: (data) => {
       console.log('this is data' + data)

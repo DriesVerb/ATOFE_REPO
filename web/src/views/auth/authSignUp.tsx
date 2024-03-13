@@ -17,7 +17,7 @@ export const SignUpView = () => {
 
   const registerUser = useRegisterUser()
  
-  console.log("comp " + registerUser.data)
+  console.log("comp " + registerUser.error)
 
   const onSubmit = (data: SignUp) => {
     registerUser.mutate(data)
@@ -65,7 +65,7 @@ export const SignUpView = () => {
           type="password"
           {...register('confirmPassword')}
         />
-        <Btn.Basic text="Sign Up" type="submit" ngClass="w-fit mt-3" />
+        <Btn.Basic text="Sign Up" type="submit" ngclass="w-fit mt-3" />
       </form>
     </AuthContainter>
   )

@@ -15,6 +15,8 @@ export const registerUser = async (body: any) => {
   const { username, password, email } = body
 
   if (!email) throw new Error("No Email")
+  if (!password) throw new Error("No Password")
+  if (!username) throw new Error("No Username")
 
   try {
     await prisma.user.create({
@@ -26,10 +28,13 @@ export const registerUser = async (body: any) => {
     })
   } catch (error) {
     if (error instanceof Prisma.PrismaClientValidationError) {
-      logger.error("something went wrong")
+      logger.error("Validation Error")
+    }
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      logger.error("Request Error")
+      throw new Error(error.meta?.target + " already in use")
     }
   }
 
-  throw new Error("on to the next one")
   return { message: 'Thank You for Registering' }
 }
