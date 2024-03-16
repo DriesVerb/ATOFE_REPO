@@ -23,7 +23,7 @@ export const SignUpView = () => {
 
   const responseError = registerUser.error?.response?.data as responseError
   const errorMessage = responseError?.error
- 
+
   const onSubmit = (data: SignUp) => {
     registerUser.mutate(data)
   }
@@ -72,7 +72,7 @@ export const SignUpView = () => {
         />
         <Btn.Basic text="Sign Up" type="submit" ngclass="w-fit mt-3" />
       </form>
-      {responseError  && <Alert text={errorMessage} />}
+      {responseError && <Alert ngclass="mt-4" text={errorMessage} />}
     </AuthContainter>
   )
 }

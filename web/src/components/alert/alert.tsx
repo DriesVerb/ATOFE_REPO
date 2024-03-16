@@ -1,12 +1,13 @@
 interface AlertProps {
   text: string
+  ngclass?: string
 }
 
 export const Alert = (props: AlertProps) => {
-  const { text } = props
+  const { text , ngclass } = props
 
   return (
-    <div role="alert" className="alert alert-error">
+    <div role="alert" className={`alert alert-error ${ngclass}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="stroke-current shrink-0 h-6 w-6"
