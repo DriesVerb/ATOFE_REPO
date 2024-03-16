@@ -4,7 +4,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRegisterUser } from '#/api/user/hooks/mutate/registerUser'
 import { SignUp, signUpSchema } from '#/types/auth'
+import { Alert } from '#/components/alert/alert'
 
+interface responseError {
+  error: string
+}
 
 export const SignUpView = () => {
   const {
@@ -16,9 +20,10 @@ export const SignUpView = () => {
   })
 
   const registerUser = useRegisterUser()
- 
-  console.log("comp " + registerUser.error)
 
+  const responseError = registerUser.error?.response?.data as responseError
+  const errorMessage = responseError?.error
+ 
   const onSubmit = (data: SignUp) => {
     registerUser.mutate(data)
   }
@@ -67,6 +72,7 @@ export const SignUpView = () => {
         />
         <Btn.Basic text="Sign Up" type="submit" ngclass="w-fit mt-3" />
       </form>
+      {responseError  && <Alert text={errorMessage} />}
     </AuthContainter>
   )
 }
