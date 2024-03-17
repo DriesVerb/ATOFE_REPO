@@ -4,7 +4,7 @@ interface AlertProps {
 }
 
 export const Alert = (props: AlertProps) => {
-  const { text , ngclass } = props
+  const { text, ngclass } = props
 
   return (
     <div role="alert" className={`alert alert-error ${ngclass}`}>
