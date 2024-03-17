@@ -17,8 +17,11 @@ export const registerUser = async (body: any) => {
   if (!email) throw new Error("No Email")
   if (!password) throw new Error("No Password")
   if (!username) throw new Error("No Username")
-  if (!confirmEmail) throw new Error("[Warning]: Request outside of client")
-  if (!confirmPassword) throw new Error("[Warning]: Request outside of client")
+  if (!confirmEmail) throw new Error("[Warning]: Request outside of client!")
+  if (!confirmPassword) throw new Error("[Warning]: Request outside of client!")
+
+  if (confirmPassword !== password) throw new Error("[warning]: request outside of client!")
+  if (confirmEmail !== email) throw new Error("[Warning]: Request outside of client!")
  
   try {
     await prisma.user.create({
