@@ -16,7 +16,7 @@ export const StartView = () => {
         onRenew={() => refetch()}
         onWrite={() => console.log('dries')}
       />
-      <Txt.p ngclass="col-span-1 md:col-span-2">
+      <Txt.P ngclass="col-span-1 md:col-span-2">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
         exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
@@ -28,7 +28,7 @@ export const StartView = () => {
         Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim.
         Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa
         et culpa duis.
-      </Txt.p>
+      </Txt.P>
       <div className="flex gap-4 justify-end">
         <Avatar />
       </div>

@@ -44,12 +44,22 @@ export const H3 = (props: TextProps) => {
 }
 
 
-export const p = (props: TextClassProps) => {
+export const P = (props: TextClassProps) => {
   const { children, ngclass } = props
 
   return (
     <>
       <p className={`text-xs sm:text-sm md:text-base lg:text-lg ${ngclass}`}>{children}</p>
+    </>
+  )
+}
+
+export const Small = (props: TextClassProps) => {
+  const { children, ngclass } = props
+
+  return (
+    <>
+      <small className={`text-xs md:text-sm ${ngclass}`}>{children}</small>
     </>
   )
 }

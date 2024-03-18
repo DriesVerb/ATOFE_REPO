@@ -32,7 +32,7 @@ export const Header = () => {
               <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/singup">Sign Up</Link>
+              <Link href="/signup">Sign Up</Link>
             </li>
           </ul>
         </div>

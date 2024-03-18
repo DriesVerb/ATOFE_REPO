@@ -1,4 +1,4 @@
-import { Btn, Form, Txt } from '#/elements'
+import { Btn, Form, Link, Txt } from '#/elements'
 import { AuthContainter } from './components/authContainer'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -73,6 +73,7 @@ export const SignUpView = () => {
         <Btn.Basic text="Sign Up" type="submit" ngclass="w-fit mt-3" />
       </form>
       {responseError && <Alert ngclass="mt-4" text={errorMessage} />}
+      <Txt.Small>Already have an account? <Link.Text href="/login">Log In</Link.Text></Txt.Small>
     </AuthContainter>
   )
 }

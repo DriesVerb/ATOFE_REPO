@@ -1,4 +1,4 @@
-import { Btn, Form, Txt } from '#/elements'
+import { Btn, Form, Link, Txt } from '#/elements'
 import { AuthContainter } from './components/authContainer'
 
 export const LoginView = () => {
@@ -16,9 +16,10 @@ export const LoginView = () => {
             text="Log in"
             type="submit"
             onClick={(e) => handleLogin(e)}
-            classname="w-fit"
+            ngclass="w-fit"
           />
         </form>
+      <Txt.Small>Don't have an account? <Link.Text href="/signup">Register</Link.Text></Txt.Small>
       </AuthContainter>
   )
 }

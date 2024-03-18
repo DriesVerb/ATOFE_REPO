@@ -3,7 +3,7 @@ import { Route } from 'wouter'
 
 export const SignUpRoute = () => {
   return (
-    <Route path="/singup">
+    <Route path="/signup">
       <SignUpView />
     </Route>
   )
