@@ -17,6 +17,7 @@ export const registerUser = async (body: any) => {
   if (!email) throw new Error("No Email")
   if (!password) throw new Error("No Password")
   if (!username) throw new Error("No Username")
+
   if (!confirmEmail) throw new Error("[Warning]: Request outside of client!")
   if (!confirmPassword) throw new Error("[Warning]: Request outside of client!")
 
@@ -33,11 +34,11 @@ export const registerUser = async (body: any) => {
     })
   } catch (error) {
     if (error instanceof Prisma.PrismaClientValidationError) {
-      logger.error("Validation Error")
+      logger.error("Prisma Validation Error Registering User")
       throw new Error("Registering User Validation Error")
     }
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      logger.error("Request Error")
+      logger.error("Prisma Request Error Registering User")
       throw new Error(error.meta?.target + " already in use")
     }
   }
