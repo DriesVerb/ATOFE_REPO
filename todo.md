@@ -1,16 +1,10 @@
 TODO
 
+[] create auth state 
+
 [] reformat emojiArray to include slug
 
 [] create emoji on hover
-
-[] conntect DB
-
-[] prisma
-
-[] graphQL
-
-[] appollo client
 
 DONE
 
@@ -19,3 +13,7 @@ DONE
 [x] set a global layout // with tailwindcss
 
 [x] routing
+
+[x] conntect DB
+
+[x] prisma

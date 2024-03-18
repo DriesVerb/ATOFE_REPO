@@ -38,7 +38,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Atofe</a>
+        <a className="btn btn-ghost text-xl">Atofe [beta]</a>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
