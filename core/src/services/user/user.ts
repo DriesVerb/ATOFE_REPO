@@ -2,6 +2,7 @@ import { Prisma, user } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
 import bcrypt from 'bcrypt'
 import { logger } from '../../utils/logger'
+import { User } from '../../types/prisma/prisma'
 
 export const getAllUsers = async (): Promise<user[]> => {
   const prisma = getPrisma()
@@ -55,9 +56,19 @@ export const loginUser = async (body: any) => {
   const prisma = getPrisma()
   const { username, password } = body
 
-  await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       username: username,
     },
   })
+
+  if (!user) throw new Error("User not found")
+
+  try {
+    bcrypt.compare(password, user?.password)
+  } catch (e) {
+    throw new Error(e as string)  
+  }
+
+  console.log(user)
 }
