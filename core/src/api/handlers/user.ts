@@ -12,3 +12,8 @@ export const register: RequestHandler = async (req, res) => {
   const response = await registerUser(req.body)
   res.send(response)
 }
+
+export const login: RequestHandler = async (req, res) => {
+  logger.info("[Request Handler] Logging in User")
+  res.send("trigger")
+}

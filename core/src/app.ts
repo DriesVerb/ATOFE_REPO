@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+
 import * as emoji from './api/handlers/emoji'
 import * as user from './api/handlers/user'
 
@@ -11,8 +12,13 @@ import { asyncHandler } from './utils/asyncHandler'
 dotenv.config()
 
 const publicRouter = express.Router()
+
+// USER
 publicRouter.get('/v1/users/', user.getAll)
 publicRouter.post('/v1/user/register', asyncHandler(user.register))
+publicRouter.post('/v1/user/login', asyncHandler(user.login))
+
+// EMOJI
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 export const app: Application = express()
