@@ -1,5 +1,6 @@
 import { Prisma, user } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
+import bcrypt from 'bcrypt'
 import { logger } from '../../utils/logger'
 
 export const getAllUsers = async (): Promise<user[]> => {
@@ -11,6 +12,7 @@ export const getAllUsers = async (): Promise<user[]> => {
 
 export const registerUser = async (body: any) => {
   const prisma = getPrisma()
+  
 
   const { username, password, email, confirmEmail, confirmPassword } = body
 
@@ -23,6 +25,11 @@ export const registerUser = async (body: any) => {
 
   if (confirmPassword !== password) throw new Error("[warning]: request outside of client!")
   if (confirmEmail !== email) throw new Error("[Warning]: Request outside of client!")
+  
+  const cryptedPassword = await bcrypt.hash(password, 10)
+
+  console.log(cryptedPassword)
+
  
   try {
     await prisma.user.create({
