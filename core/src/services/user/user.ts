@@ -1,8 +1,9 @@
 import { Prisma, user } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import { logger } from '../../utils/logger'
-import { User } from '../../types/prisma/prisma'
+import { jwtTokenKey } from '../../utils/dotenv'
 
 export const getAllUsers = async (): Promise<user[]> => {
   const prisma = getPrisma()
@@ -62,13 +63,24 @@ export const loginUser = async (body: any) => {
     },
   })
 
-  if (!user) throw new Error("User not found")
+  if (!user) throw new Error('User not found')
 
-  try {
-    bcrypt.compare(password, user?.password)
-  } catch (e) {
-    throw new Error(e as string)  
+  const matchPasswords = await bcrypt.compare(password, user?.password)
+
+  if (!matchPasswords) throw new Error('Something went wrong')
+
+  const token = jwt.sign(
+    {
+      userusername: user.username,
+      userEmail: user.email,
+    },
+    jwtTokenKey,
+    { expiresIn: '24h' }
+  )
+
+  return {
+    message: "Login Succesfull",
+    username: user.username,
+    token
   }
-
-  console.log(user)
 }
