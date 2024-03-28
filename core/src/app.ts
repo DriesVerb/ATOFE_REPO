@@ -8,18 +8,21 @@ import * as user from './api/handlers/user'
 import { frontendPort } from './utils/dotenv'
 import { errorHandler } from './api/middleware/errorHandling'
 import { asyncHandler } from './utils/asyncHandler'
+import { authenticateUser } from './api/middleware/auth'
 
 dotenv.config()
 
 const publicRouter = express.Router()
 
-// USER
 publicRouter.get('/v1/users/', user.getAll)
 publicRouter.post('/v1/user/register', asyncHandler(user.register))
 publicRouter.post('/v1/user/login', asyncHandler(user.login))
 
-// EMOJI
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
+
+const userRouter = express.Router()
+userRouter.use(authenticateUser)
+userRouter.get('/v1/profile/me', asyncHandler(user.me))
 
 export const app: Application = express()
 app.use(express.json())
@@ -30,4 +33,5 @@ app.use(
   })
 )
 app.use('/public', publicRouter)
+app.use('/user', userRouter)
 app.use(errorHandler)

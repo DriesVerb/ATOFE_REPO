@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import { getAllUsers, loginUser, registerUser } from '../../services/user/user'
+import { getAllUsers, loginUser, registerUser } from '../../services/user/auth'
 import { logger } from '../../utils/logger'
 
 export const getAll: RequestHandler = async (_req, res) => {
@@ -17,3 +17,8 @@ export const login: RequestHandler = async (req, res) => {
   const response = await loginUser(req.body)
   res.send(response)
 }
+
+export const me: RequestHandler = async (req, res) => {
+  res.send("you arrived")
+}
+
