@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import { RequestHandler } from 'express'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
-import { CustomRequest, RequestJwt } from '../../types/requests/jwt'
+import { CustomRequest} from '../../types/requests/jwt'
 
 
 const getAuthToken = (auth: string): string | undefined => {
@@ -29,15 +29,14 @@ export const authenticateUser: RequestHandler = async (req, res, next)=> {
   try {
     decoded = jwt.verify(token, jwtTokenKey)
   } catch (error) {
-    logger.error('cannot Verify token')
-    throw new Error("Cannot verify token")
+    logger.error("cannot verify token")
   }
-
+  
   if (!decoded) {
-    throw new Error('Token is undefined')
+    res.status(500).send({ message: "cannot verify token" })
   }
 
-  ;(req as unknown as CustomRequest).token = decoded
+  ;(req as unknown as CustomRequest).token = decoded!
 
   next()
 }
