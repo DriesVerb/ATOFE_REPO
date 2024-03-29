@@ -1,7 +1,7 @@
-import { Login } from "#/types/auth"
-import { useMutation } from "@tanstack/react-query"
-import { loginUser } from "../../func/login"
-import { AxiosError } from "axios"
+import { Login } from '#/types/auth'
+import { useMutation } from '@tanstack/react-query'
+import { loginUser } from '../../func/login'
+import { AxiosError } from 'axios'
 
 export const useLoginUser = () => {
   return useMutation({
@@ -11,6 +11,6 @@ export const useLoginUser = () => {
     },
     onSuccess: (data) => {
       console.log(data)
-    }
+    },
   })
 }
