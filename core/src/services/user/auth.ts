@@ -4,6 +4,7 @@ import { Prisma, user } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
+import { warnOutside } from '../../utils/consts/loggingMessage'
 
 export const getAllUsers = async (): Promise<user[]> => {
   const prisma = getPrisma()
@@ -21,13 +22,13 @@ export const registerUser = async (body: any) => {
   if (!password) throw new Error('No Password')
   if (!username) throw new Error('No Username')
 
-  if (!confirmEmail) throw new Error('[Warning]: Request outside of client!')
-  if (!confirmPassword) throw new Error('[Warning]: Request outside of client!')
+  if (!confirmEmail) throw new Error(warnOutside)
+  if (!confirmPassword) throw new Error(warnOutside)
 
   if (confirmPassword !== password)
-    throw new Error('[warning]: request outside of client!')
+    throw new Error(warnOutside)
   if (confirmEmail !== email)
-    throw new Error('[Warning]: Request outside of client!')
+    throw new Error(warnOutside)
 
   const cryptedPassword = await bcrypt.hash(password, 10)
 

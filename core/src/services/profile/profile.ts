@@ -1,3 +1,3 @@
-export const meProfile = async(req: Request) => {
-  console.log(req)
+export const meProfile = async (body: any) => {
+  return body.token.username
 }

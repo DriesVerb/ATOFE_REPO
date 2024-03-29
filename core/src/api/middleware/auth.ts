@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { RequestHandler } from 'express'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
-import { CustomRequest } from '../../types/requests/jwt'
+import { notAuth, warnOutside } from '../../utils/consts/loggingMessage'
 
 const getAuthToken = (auth: string): string | undefined => {
   if (auth && auth.startsWith('Bearer ')) {
@@ -12,21 +12,23 @@ const getAuthToken = (auth: string): string | undefined => {
 }
 
 export const authenticateUser: RequestHandler = async (req, res, next) => {
-  logger.info('Authenticating user')
-  const authHeader = getAuthToken(req.headers.authorization!)
+  logger.info(notAuth)
+  const authToken = getAuthToken(req.headers.authorization!)
 
-  if (!authHeader) {
-    return res.status(401).send({ message: 'Not authorized' })
+  if (!authToken) {
+    logger.error(notAuth)
+    return res.status(401).send({ message: notAuth })
   }
 
-  const test = req.headers.authorization
-
-  const token = test!.split(' ')[1]
+  if (req.body.token?.username) {
+    logger.error(warnOutside)
+    return res.status(401).send({ message: notAuth })
+  }
 
   let decoded
 
   try {
-    decoded = jwt.verify(token, jwtTokenKey)
+    decoded = jwt.verify(authToken, jwtTokenKey)
   } catch (error) {
     logger.error('cannot verify token')
   }
@@ -35,7 +37,6 @@ export const authenticateUser: RequestHandler = async (req, res, next) => {
     res.status(500).send({ message: 'cannot verify token' })
   }
 
-  ;(req as unknown as CustomRequest).token = decoded!
-
+  req.body.token = decoded!
   next()
 }
