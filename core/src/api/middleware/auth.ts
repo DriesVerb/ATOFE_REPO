@@ -1,9 +1,8 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { RequestHandler } from 'express'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
-import { CustomRequest} from '../../types/requests/jwt'
-
+import { CustomRequest } from '../../types/requests/jwt'
 
 const getAuthToken = (auth: string): string | undefined => {
   if (auth && auth.startsWith('Bearer ')) {
@@ -12,7 +11,7 @@ const getAuthToken = (auth: string): string | undefined => {
   }
 }
 
-export const authenticateUser: RequestHandler = async (req, res, next)=> {
+export const authenticateUser: RequestHandler = async (req, res, next) => {
   logger.info('Authenticating user')
   const authHeader = getAuthToken(req.headers.authorization!)
 
@@ -29,11 +28,11 @@ export const authenticateUser: RequestHandler = async (req, res, next)=> {
   try {
     decoded = jwt.verify(token, jwtTokenKey)
   } catch (error) {
-    logger.error("cannot verify token")
+    logger.error('cannot verify token')
   }
-  
+
   if (!decoded) {
-    res.status(500).send({ message: "cannot verify token" })
+    res.status(500).send({ message: 'cannot verify token' })
   }
 
   ;(req as unknown as CustomRequest).token = decoded!

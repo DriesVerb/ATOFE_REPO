@@ -19,6 +19,7 @@ export const login: RequestHandler = async (req, res) => {
 }
 
 export const me: RequestHandler = async (req, res) => {
+  console.log(req)
   res.send("you arrived")
 }
 
