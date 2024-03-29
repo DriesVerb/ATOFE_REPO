@@ -40,7 +40,7 @@ export const LoginView = () => {
           error={errors.password && (errors.password.message as string)}
           {...register('password')}
         />
-        <Btn.Basic text="Log in" type="submit" ngclass="w-fit" />
+        <Btn.Basic variant="secondary" text="Log in" type="submit" ngclass="w-fit" />
       </form>
       <Txt.Small>
         Don't have an account? <Link.Text href="/signup">Register</Link.Text>
