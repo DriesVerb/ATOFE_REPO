@@ -1,20 +1,18 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
 import { Txt } from '#/elements'
-import { useGetRanEmojis } from '#/api/emoji/hooks/query/useGetRanEmoji'
+import { authStore } from '#/store/auth'
 
 export const StartView = () => {
-  const { data: emojis, isLoading, refetch } = useGetRanEmojis(5)
 
-  if (isLoading) <div>Loading</div>
+  const isLoggedIn = authStore.state.loggedIn
+
+  console.log(isLoggedIn)
 
   return (
     <>
       <StoryCta
         classname="col-span-1 md:col-span-2"
-        emojis={emojis!}
-        onRenew={() => refetch()}
-        onWrite={() => console.log('dries')}
       />
       <Txt.P ngclass="col-span-1 md:col-span-2">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit

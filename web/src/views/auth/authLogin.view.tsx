@@ -30,8 +30,8 @@ export const LoginView = () => {
         <Form.Text
           placeholdertext="Username"
           label="Enter Username"
-          {...register('username')}
           error={errors.username && (errors.username.message as string)}
+          {...register('username')}
         />
         <Form.Text
           placeholdertext="Password"

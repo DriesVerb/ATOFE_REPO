@@ -34,6 +34,9 @@ export const Header = () => {
             <li>
               <Link href="/signup">Sign Up</Link>
             </li>
+            <li>
+              <Link href="/profile">Profile</Link>
+            </li>
           </ul>
         </div>
       </div>
