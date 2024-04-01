@@ -2,11 +2,15 @@ import jwt from 'jsonwebtoken'
 import { RequestHandler } from 'express'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
-import { midMess, notAuth, warnOutside } from '../../utils/consts/loggingMessage'
+import {
+  midMess,
+  notAuth,
+  warnOutside,
+} from '../../utils/consts/loggingMessage'
 import { getAuthToken } from '../../utils/helper/auth'
 
 export const authenticateUser: RequestHandler = async (req, res, next) => {
-  logger.info(midMess("authenticating user"))
+  logger.info(midMess('authenticating user'))
   const authToken = getAuthToken(req.headers.authorization!)
 
   if (!authToken) {
@@ -25,15 +29,12 @@ export const authenticateUser: RequestHandler = async (req, res, next) => {
     decoded = jwt.verify(authToken, jwtTokenKey)
   } catch (error) {
     logger.error('cannot verify token')
-    res.status(500).send({ message: 'cannot verify token' })
   }
 
-  if (!decoded) {
-    logger.error('cannot verify token')
-    res.status(500).send({ message: 'cannot verify token' })
+  if (!decoded || decoded === undefined) {
+    return res.status(401).send({ message: 'cannot verify token' })
   }
 
   req.body.token = decoded
-
   next()
 }
