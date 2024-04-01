@@ -5,7 +5,7 @@ import { Login, loginSchema } from '#/types/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useLoginUser } from '#/api/user/hooks/mutate/loginUser'
 
-export const LoginView = () => {
+export const LoginContainer = ({ href }: { href?: string }) => {
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ export const LoginView = () => {
     resolver: zodResolver(loginSchema),
   })
 
-  const loginUser = useLoginUser()
+  const loginUser = useLoginUser(href)
 
   const onSubmit = (data: Login) => {
     loginUser.mutate(data)
@@ -40,11 +40,20 @@ export const LoginView = () => {
           error={errors.password && (errors.password.message as string)}
           {...register('password')}
         />
-        <Btn.Basic variant="secondary" text="Log in" type="submit" ngclass="w-fit" />
+        <Btn.Basic
+          variant="secondary"
+          text="Log in"
+          type="submit"
+          ngclass="w-fit"
+        />
       </form>
       <Txt.Small>
         Don't have an account? <Link.Text href="/signup">Register</Link.Text>
       </Txt.Small>
     </AuthContainter>
   )
+}
+
+export const LoginView = () => {
+  return <LoginContainer />
 }

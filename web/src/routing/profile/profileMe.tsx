@@ -1,10 +1,11 @@
 import { ProfileMe } from '#/views/profile/profileMe'
-import { ProtectedRoute } from '../components/protectedRoute'
+import { Route } from 'wouter'
 
 export const ProfileMeRoute = () => {
+
   return (
-    <ProtectedRoute path="/profile">
+    <Route path="profile">
       <ProfileMe />
-    </ProtectedRoute>
+    </Route>
   )
 }

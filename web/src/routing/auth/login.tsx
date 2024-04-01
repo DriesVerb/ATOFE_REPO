@@ -1,10 +1,12 @@
-import { Route } from 'wouter'
+import { Route, Switch } from 'wouter'
 import { LoginView } from '#/views/auth/authLogin.view'
 
 export const LoginRoute = () => {
   return (
-    <Route path="/login">
-      <LoginView />
-    </Route>
+    <Switch>
+      <Route path="/login">
+        <LoginView />
+      </Route>
+    </Switch>
   )
 }

@@ -1,13 +1,8 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
 import { Txt } from '#/elements'
-import { authStore } from '#/store/auth'
 
 export const StartView = () => {
-
-  const isLoggedIn = authStore.state.loggedIn
-
-  console.log(isLoggedIn)
 
   return (
     <>

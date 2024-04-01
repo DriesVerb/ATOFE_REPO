@@ -1,4 +1,4 @@
-import {  Router } from 'wouter'
+import { Router } from 'wouter'
 import { BaseRoute } from '#/routing/base/base'
 import { LoginRoute } from './auth/login'
 import { SignUpRoute } from './auth/signup'
@@ -7,10 +7,10 @@ import { ProfileMeRoute } from './profile/profileMe'
 export const MainRouter = () => {
   return (
     <Router>
-      <LoginRoute />
       <SignUpRoute />
+      <LoginRoute />
+      <ProfileMeRoute /> 
       <BaseRoute />
-      <ProfileMeRoute />
     </Router>
   )
 }
