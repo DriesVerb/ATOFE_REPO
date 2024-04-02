@@ -9,7 +9,7 @@ export const MainRouter = () => {
     <Router>
       <SignUpRoute />
       <LoginRoute />
-      <ProfileMeRoute /> 
+      <ProfileMeRoute />
       <BaseRoute />
     </Router>
   )
