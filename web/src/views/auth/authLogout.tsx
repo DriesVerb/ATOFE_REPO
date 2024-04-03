@@ -1,5 +1,5 @@
 import { Btn, Txt } from '#/elements'
-import { useLogoutUser } from '#/utils/library/logoutUser'
+import { useLogoutUser } from '#/utils/helper/logoutUser'
 import { AuthContainter } from './components/authContainer'
 
 export const LogoutView = () => {

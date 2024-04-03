@@ -2,7 +2,7 @@ import { Login } from '#/types/auth'
 import { useMutation } from '@tanstack/react-query'
 import { loginUser } from '../../func/login'
 import { AxiosError } from 'axios'
-import { useLocalUser } from '#/utils/library/loggedInUser'
+import { useLocalUser } from '#/utils/helper/loggedInUser'
 
 export const useLoginUser = (href: string = '/') => {
   const { setUser } = useLocalUser()

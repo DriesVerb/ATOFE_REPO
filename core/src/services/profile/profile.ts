@@ -1,3 +1,3 @@
 export const meProfile = async (body: any) => {
-  return body.token.username
+  return {message: `your name is ${body.token.username}`}
 }
