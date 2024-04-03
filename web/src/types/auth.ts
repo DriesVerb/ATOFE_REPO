@@ -33,3 +33,11 @@ export const loginSchema = z.object({
 })
 
 export type Login = z.infer<typeof loginSchema>
+
+export const loginResponseSchema = z.object({
+  message: z.string(),
+  token: z.string(),
+  username: z.string()
+}).strict()
+
+export type LoginResponse = z.infer<typeof loginResponseSchema>

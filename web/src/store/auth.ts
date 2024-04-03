@@ -2,10 +2,12 @@ import { create } from 'zustand'
 
 export type AuthState = {
   loggedIn: boolean
-  setLoggedIn: () => void
+  user: string | undefined
+  setLoggedIn: (by: string) => void
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   loggedIn: false,
-  setLoggedIn: () => set(() => ({ loggedIn: true })),
+  user: undefined,
+  setLoggedIn: (by) => set(() => ({ loggedIn: true, user: by}))
 }))

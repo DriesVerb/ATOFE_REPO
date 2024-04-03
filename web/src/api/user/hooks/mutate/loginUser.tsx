@@ -3,17 +3,16 @@ import { useMutation } from '@tanstack/react-query'
 import { loginUser } from '../../func/login'
 import { AxiosError } from 'axios'
 import { navigate } from 'wouter/use-browser-location'
-import { useAuthStore } from '#/store/auth'
+import { createLoginUser } from '#/utils/library/loggedInUser'
 
 export const useLoginUser = (href: string = '/') => {
-  const setLoggedIn = useAuthStore((state) => state.setLoggedIn)
   return useMutation({
     mutationFn: (body: Login) => loginUser(body),
     onError: (error: AxiosError) => {
       console.log(error)
     },
-    onSuccess: () => {
-      setLoggedIn()
+    onSuccess: (result) => {
+      createLoginUser(result.data)
       navigate(href)
     },
   })
