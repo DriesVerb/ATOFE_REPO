@@ -1,6 +1,7 @@
 import { useAuthStore } from '#/store/auth'
 import { LoginResponse, loginResponseSchema } from '#/types/auth'
 import { navigate } from 'wouter/use-browser-location'
+import { storageKeys } from '../const/localstorage'
 
 export const useLocalUser = () => {
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn)
@@ -13,7 +14,7 @@ export const useLocalUser = () => {
     }
     const { username, token } = data
     setLoggedIn(username)
-    localStorage.setItem('token', token)
+    localStorage.setItem(storageKeys.token, token)
     navigate(href)
   }
 
