@@ -28,3 +28,9 @@ export const me: RequestHandler = async (req, res) => {
   res.send(result)
 }
 
+export const verify: RequestHandler = async (req, res) => {
+  logger.info(reqHan("Verify Token"))
+  const result = await meProfile(req.body)
+  res.send(result)
+}
+

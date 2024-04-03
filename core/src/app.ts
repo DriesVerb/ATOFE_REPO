@@ -23,6 +23,7 @@ publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 const userRouter = express.Router()
 userRouter.use(authenticateUser)
 userRouter.get('/v1/profile/me', asyncHandler(user.me))
+publicRouter.post('/v1/profile/verify', asyncHandler(user.verify))
 
 export const app: Application = express()
 app.use(express.json())
