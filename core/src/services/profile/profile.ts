@@ -1,3 +1,16 @@
+import { getPrisma } from "../../databases/prisma"
+
 export const meProfile = async (body: any) => {
-  return {message: `your name is ${body.token.username}`}
+  const prisma = getPrisma()
+
+  console.log(body.token)
+
+
+  const profile = await prisma.profile.findUnique({
+    where: {
+      userId: body.token.userId
+   }
+  })
+
+  return {profile}
 }

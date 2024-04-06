@@ -4,6 +4,7 @@ import cors from 'cors'
 
 import * as emoji from './api/handlers/emoji'
 import * as user from './api/handlers/user'
+import * as profile from './api/handlers/profile'
 
 import { frontendPort } from './utils/dotenv'
 import { errorHandler } from './api/middleware/errorHandling'
@@ -22,7 +23,8 @@ publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 const userRouter = express.Router()
 userRouter.use(authenticateUser)
-userRouter.get('/v1/profile/me', asyncHandler(user.me))
+userRouter.get('/v1/profile/me', asyncHandler(profile.me))
+userRouter.post('/v1/profile/edit', asyncHandler(profile.edit))
 userRouter.post('/v1/verify', asyncHandler(user.verify))
 
 export const app: Application = express()
