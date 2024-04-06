@@ -25,10 +25,8 @@ export const registerUser = async (body: any) => {
   if (!confirmEmail) throw new Error(warnOutside)
   if (!confirmPassword) throw new Error(warnOutside)
 
-  if (confirmPassword !== password)
-    throw new Error(warnOutside)
-  if (confirmEmail !== email)
-    throw new Error(warnOutside)
+  if (confirmPassword !== password) throw new Error(warnOutside)
+  if (confirmEmail !== email) throw new Error(warnOutside)
 
   const cryptedPassword = await bcrypt.hash(password, 10)
 
@@ -83,5 +81,17 @@ export const loginUser = async (body: any) => {
     message: 'Login Succesfull',
     username: user.username,
     token,
+  }
+}
+
+export const verifyUser = async (body: any) => {
+  const tokenUsername = body.token.username
+  const username = body.username
+
+  if (tokenUsername === username) {
+    return { username: tokenUsername }
+  } else {
+    logger.error('Could not verify user')
+    throw new Error('Could not verify User')
   }
 }

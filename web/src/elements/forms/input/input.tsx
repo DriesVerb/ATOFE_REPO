@@ -7,6 +7,7 @@ interface InputProps {
   error?: string
   type?: string
   variant?: string
+  value?: string
   classname?: string
 }
 
@@ -14,6 +15,7 @@ export const Text = React.forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const {
       label,
+      value,
       placeholdertext,
       classname,
       error,
@@ -37,6 +39,7 @@ export const Text = React.forwardRef<HTMLInputElement, InputProps>(
           placeholder={placeholdertext}
           className={classInput}
           aria-errormessage={error}
+          value={value}
           {...props}
         />
         {error && (

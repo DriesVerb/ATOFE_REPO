@@ -30,6 +30,7 @@ export const LoginContainer = ({ href }: { href?: string }) => {
         <Form.Text
           placeholdertext="Username"
           label="Enter Username"
+          value="user"
           error={errors.username && (errors.username.message as string)}
           {...register('username')}
         />
@@ -38,6 +39,7 @@ export const LoginContainer = ({ href }: { href?: string }) => {
           type="password"
           label="enter password"
           error={errors.password && (errors.password.message as string)}
+          value="fristi1987"
           {...register('password')}
         />
         <Btn.Basic

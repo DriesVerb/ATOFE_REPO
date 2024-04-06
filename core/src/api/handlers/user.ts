@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import { getAllUsers, loginUser, registerUser } from '../../services/user/auth'
+import { getAllUsers, loginUser, registerUser, verifyUser } from '../../services/user/auth'
 import { logger } from '../../utils/logger'
 import { meProfile } from '../../services/profile/profile'
 import { reqHan } from '../../utils/consts/loggingMessage'
@@ -30,7 +30,7 @@ export const me: RequestHandler = async (req, res) => {
 
 export const verify: RequestHandler = async (req, res) => {
   logger.info(reqHan("Verify Token"))
-  const result = await meProfile(req.body)
+  const result = await verifyUser(req.body)
   res.send(result)
 }
 

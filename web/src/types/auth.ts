@@ -41,3 +41,8 @@ export const loginResponseSchema = z.object({
 }).strict()
 
 export type LoginResponse = z.infer<typeof loginResponseSchema>
+
+
+export type VerifyUser = {
+  username: string | null
+}

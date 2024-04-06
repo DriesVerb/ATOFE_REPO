@@ -8,6 +8,7 @@ export const useLogoutUser = () => {
   const logout = () => {
     setLogout()
     localStorage.removeItem(storageKeys.token)
+    localStorage.removeItem(storageKeys.username)
     navigate('/')
   }
 
