@@ -6,7 +6,7 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-  const { avatar = '👨🏽‍❤️‍👨🏾', avatarBg = ["#8338ec", "#3a86ff"] } = props
+  const { avatar, avatarBg } = props
 
   return (
     <div className="avatar">

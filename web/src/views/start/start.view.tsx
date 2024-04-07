@@ -4,6 +4,9 @@ import { Txt } from '#/elements'
 
 export const StartView = () => {
 
+  const avatar = "🙀"
+  const avatarBG = ["#ffbe0b", "#fb5607"]
+
   return (
     <>
       <StoryCta
@@ -23,7 +26,7 @@ export const StartView = () => {
         et culpa duis.
       </Txt.P>
       <div className="flex gap-4 justify-end">
-        <Avatar />
+        <Avatar avatar={avatar} avatarBg={avatarBG}/>
       </div>
     </>
   )
