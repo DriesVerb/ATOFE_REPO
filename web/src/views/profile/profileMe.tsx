@@ -2,27 +2,31 @@ import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { Txt } from '#/elements'
 import { useAuthStore } from '#/store/auth'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
+
 
 export const ProfileMe = () => {
-  const user = useAuthStore((state) => state.user)
+  const username = useAuthStore((state) => state.user)
   
-  const { data, isLoading } = useGetProfileMe()
+  const { data: user, isLoading } = useGetProfileMe()
 
   if (isLoading) return <div>loading</div>
-
-  console.log(data)
-
-  const profile = data?.profile
+ 
+  const profile = user?.profile
 
   if (!profile || profile === undefined) return <div>error</div>
 
   const { avatar, avatarBg, bio } = profile
 
   return (
-    <div className="max-w-fit bg-red-50">
-      <Txt.H2 text={user!} />
+    <div className="col-span-5 bg-sky-50">
+      <Txt.H2 text={username!} />
       <Avatar avatarBg={avatarBg} avatar={avatar} />
       <Txt.P>{bio}</Txt.P>
+      <div>
+        <Picker data={data} onEmojiSelect={console.log} />
+      </div>
     </div>
   )
 }
