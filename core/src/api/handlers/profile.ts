@@ -10,13 +10,13 @@ export const me: RequestHandler = async (req, res) => {
 }
 
 export const create: RequestHandler = async (req, res) => {
-  logger.info(reqHan('create profile'))
+  logger.info(reqHan('Create profile'))
   const result = await createProfile(req.body)
   res.send(result)
 }
 
 export const update: RequestHandler = async (req, res) => {
-  logger.info(reqHan('update profile'))
+  logger.info(reqHan('Update profile'))
   const result = await updateProfile(req.body)
   res.send(result)
 }

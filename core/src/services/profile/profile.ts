@@ -1,4 +1,6 @@
+import { Prisma } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
+import { logger } from '../../utils/logger'
 
 export const meProfile = async (body: any) => {
   const prisma = getPrisma()
@@ -38,12 +40,14 @@ export const createProfile = async (body: any) => {
 export const updateProfile = async (body: any) => {
   const prisma = getPrisma()
 
-  const { profileId, bio, avatar, avatarBg } = body
+  const { token, bio, avatar, avatarBg } = body
+
+  const { userId } = token
 
   try {
     await prisma.profile.update({
       where: {
-        id: profileId
+        userId: userId,
       },
       data: {
         bio: bio,
@@ -52,8 +56,15 @@ export const updateProfile = async (body: any) => {
       },
     })
   } catch (error) {
-    console.log(error)
+    if (error instanceof Prisma.PrismaClientValidationError) {
+      logger.error('Prisma Validation Error Registering User')
+      throw new Error('Registering User Validation Error')
+    }
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      logger.error('Prisma Request Error Registering User')
+      throw new Error(error.meta?.target + ' already in use')
+    }
   }
 
-  return { message: 'created profile' }
+  return { message: 'Updated Profile' }
 }
