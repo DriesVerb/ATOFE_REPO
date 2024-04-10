@@ -4,6 +4,7 @@ import { LoginRoute } from './auth/login'
 import { SignUpRoute } from './auth/signup'
 import { ProfileMeRoute } from './profile/profileMe'
 import { LogoutRoute } from './auth/logout'
+import { ProfileUpdateRoute } from './profile/profileUpdate'
 
 export const MainRouter = () => {
   return (
@@ -12,6 +13,7 @@ export const MainRouter = () => {
       <LoginRoute />
       <LogoutRoute />
       <ProfileMeRoute />
+      <ProfileUpdateRoute />
       <BaseRoute />
     </Router>
   )
