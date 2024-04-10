@@ -5,6 +5,8 @@ import { getPrisma } from '../../databases/prisma'
 import { logger } from '../../utils/logger'
 import { jwtTokenKey } from '../../utils/dotenv'
 import { warnOutside } from '../../utils/consts/loggingMessage'
+import { getRandomNumChar } from '../emoji/emoji'
+import { randomHexColorCode } from '../../utils/helper/hexColor'
 
 export const getAllUsers = async (): Promise<user[]> => {
   const prisma = getPrisma()
@@ -30,8 +32,10 @@ export const registerUser = async (body: any) => {
 
   const cryptedPassword = await bcrypt.hash(password, 10)
 
+  let user
+
   try {
-    await prisma.user.create({
+    user = await prisma.user.create({
       data: {
         email: email,
         username: username,
@@ -47,6 +51,27 @@ export const registerUser = async (body: any) => {
       logger.error('Prisma Request Error Registering User')
       throw new Error(error.meta?.target + ' already in use')
     }
+  }
+
+  if (!user) return {message: "No user created"}
+
+  const { id } = user
+
+  const bio = 'New member to the ATOFE community'
+  const avatar = getRandomNumChar(1)
+  const avatarBg = [randomHexColorCode(), randomHexColorCode()]
+
+  try {
+    logger.info("created profile")
+    await prisma.profile.create({
+      data: {
+        bio: bio,
+        avatar: avatar[0],
+        avatarBg: avatarBg,
+        userId: id,
+      },
+    })
+  } catch (error) {
   }
 
   return { message: 'Thank You for Registering' }
