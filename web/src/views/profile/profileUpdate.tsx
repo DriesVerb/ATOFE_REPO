@@ -1,6 +1,6 @@
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
-import { Form, Txt } from '#/elements'
+import { Btn, Form, Ico, Txt } from '#/elements'
 import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
 
@@ -18,6 +18,9 @@ export const UpdateProfileView = () => {
       <Txt.H1 text="here here here" />
       <Txt.H2 text="Change Avatar" />
       <Avatar avatarBg={avatarBg} avatar={avatar} />
+      <Btn.Icon>
+       <Ico.EditGear /> 
+      </Btn.Icon>
       <form>
         <div>{avatar}</div>
         <Form.Text label="#1 color" placeholdertext="#ffffff" />
