@@ -1,11 +1,14 @@
-import data from '@emoji-mart/data'
-import Picker from '@emoji-mart/react'
 import { Btn, Form, Ico, Txt } from '#/elements'
 import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
+import { ColorPicker } from '#/components/colorPicker/colorPicker'
+import { useState } from 'react'
+import { EmojiPicker, PickerEmoji } from '#/components/emojiPicker/emojiPicker'
 
 export const UpdateProfileView = () => {
   const { data: user, isLoading } = useGetProfileMe()
+  const [color, setColor] = useState ("")
+  const [emoji, setEmoji] = useState<PickerEmoji>()
 
   if (isLoading) return <div>loading</div>
 
@@ -15,12 +18,14 @@ export const UpdateProfileView = () => {
 
   return (
     <div>
-      <Txt.H1 text="here here here" />
+      <Txt.H1 text={color} />
       <Txt.H2 text="Change Avatar" />
       <Avatar avatarBg={avatarBg} avatar={avatar} />
+      <p>{emoji?.native}</p>
       <Btn.Icon>
        <Ico.EditGear /> 
       </Btn.Icon>
+      <ColorPicker onPick={setColor}/>
       <form>
         <div>{avatar}</div>
         <Form.Text label="#1 color" placeholdertext="#ffffff" />
@@ -41,7 +46,7 @@ export const UpdateProfileView = () => {
         </div>
       </dialog>
       <div>
-        <Picker data={data} onEmojiSelect={console.log} />
+        <EmojiPicker onPick={setEmoji} />
       </div>
     </div>
   )
