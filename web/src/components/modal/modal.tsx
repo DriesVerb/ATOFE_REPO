@@ -1,32 +1,28 @@
+import { Btn } from '#/elements'
+import { Children } from '#/types/global/common'
 import Portal from '../portal/portal'
 
 interface ModalProps {
   open: boolean
+  children: Children
   setOpen: (state: boolean) => void
 }
 
 export const Modal = (props: ModalProps) => {
-  const { open, setOpen } = props
+  const { open, setOpen, children } = props
 
   return (
     <Portal wrapperId="modal-wrapper">
         <dialog
           id="my_modal_1"
-          className={`fixe inset-0 modal modal-${open ? 'open' : 'close'}`}
+          className={`fixed inset-0 modal modal-${open ? 'open' : 'close'}`}
         >
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Hello!</h3>
+            {children}
             <p className="py-4">
               Press ESC key or click the button below to close
             </p>
-            <div className="modal-action">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button onClick={() => setOpen(false)} className="btn">
-                  Close
-                </button>
-              </form>
-            </div>
+            <Btn.Basic onClick={() => setOpen(false)} text="close"/>
           </div>
         </dialog>
     </Portal>

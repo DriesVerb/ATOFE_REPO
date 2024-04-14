@@ -29,10 +29,11 @@ export const StartView = () => {
       <div className="flex gap-4 justify-end">
         <Avatar avatar={avatar} avatarBg={avatarBG} />
       </div>
-       {open && "open"}
       <Btn.Basic text="open please" onClick={() => setOpen(true)} />
 
-      <Modal open={open} setOpen={setOpen}/>
+      <Modal open={open} setOpen={setOpen}>
+        <p>paragraph</p>
+      </Modal>
     </>
   )
 }
