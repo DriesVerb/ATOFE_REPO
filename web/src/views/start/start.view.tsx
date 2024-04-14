@@ -1,17 +1,18 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
-import { Txt } from '#/elements'
+import { Btn, Txt } from '#/elements'
+import { Modal } from '#/components/modal/modal'
+import { useState } from 'react'
 
 export const StartView = () => {
+  const [open, setOpen] = useState(true)
 
-  const avatar = "🙀"
-  const avatarBG = ["#ffbe0b", "#fb5607"]
+  const avatar = '🙀'
+  const avatarBG = ['#ffbe0b', '#fb5607']
 
   return (
     <>
-      <StoryCta
-        classname="col-span-1 md:col-span-2"
-      />
+      <StoryCta classname="col-span-1 md:col-span-2" />
       <Txt.P ngclass="col-span-1 md:col-span-2">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
@@ -26,8 +27,12 @@ export const StartView = () => {
         et culpa duis.
       </Txt.P>
       <div className="flex gap-4 justify-end">
-        <Avatar avatar={avatar} avatarBg={avatarBG}/>
+        <Avatar avatar={avatar} avatarBg={avatarBG} />
       </div>
+       {open && "open"}
+      <Btn.Basic text="open please" onClick={() => setOpen(true)} />
+
+      <Modal open={open} setOpen={setOpen}/>
     </>
   )
 }
