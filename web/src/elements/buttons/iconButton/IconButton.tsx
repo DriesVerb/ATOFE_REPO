@@ -4,6 +4,7 @@ import { Children } from '#/types/global/common'
 
 interface IconProps {
   children: Children
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   ngclass?: string
   variant?: string
 }
