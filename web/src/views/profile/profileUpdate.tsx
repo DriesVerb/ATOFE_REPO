@@ -1,4 +1,6 @@
-import { Btn, Form, Ico, Txt } from '#/elements'
+import clsx from 'clsx'
+
+import { Btn, Ico, Txt } from '#/elements'
 import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { ColorPicker } from '#/components/colorPicker/colorPicker'
@@ -6,15 +8,17 @@ import { useState } from 'react'
 import { EmojiPicker, PickerEmoji } from '#/components/emojiPicker/emojiPicker'
 import { Emoji } from '#/elements/emojis/emoji/emoji'
 import { Modal } from '#/components/modal/modal'
-import clsx from 'clsx'
+import { useProfileUpdate } from '#/api/profile/hooks/mutate/useProfileUpdate'
 
 export const UpdateProfileView = () => {
   const { data: user, isLoading } = useGetProfileMe()
   const [open, setOpen] = useState(false)
-  const [color1, setColor1] = useState('')
-  const [color2, setColor2] = useState('')
   const [select, setSelect] = useState('')
+  const [color1, setColor1] = useState('')
+  const [color3, setColor2] = useState('')
   const [emoji, setEmoji] = useState<PickerEmoji>()
+
+  const updateProfile = useProfileUpdate()
 
   if (isLoading) return <div>loading</div>
 
@@ -29,6 +33,13 @@ export const UpdateProfileView = () => {
 
   const classInput1 = clsx(`badge bg-[${avatarBg[1]}]`)
   const classInput2 = clsx(`badge bg-[${avatarBg[0]}]`)
+
+  const onEmojiChange = (emoji: string) => {
+    console.log("treigger")
+    updateProfile.mutate({
+      avatar: emoji,
+    })
+  }
 
   return (
     <>
@@ -75,6 +86,7 @@ export const UpdateProfileView = () => {
           <div>
             <Emoji code={emoji?.native!} />
             <EmojiPicker onPick={setEmoji} />
+            <Btn.Basic text="update Emoji" onClick={() => onEmojiChange(emoji?.native!)} />
           </div>
         )}
         {select === 'color1' && (
