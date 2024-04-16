@@ -1,11 +1,8 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from './components/StoryCta'
-import { Btn, Txt } from '#/elements'
-import { Modal } from '#/components/modal/modal'
-import { useState } from 'react'
+import { Txt } from '#/elements'
 
 export const StartView = () => {
-  const [open, setOpen] = useState(true)
 
   const avatar = '🙀'
   const avatarBG = ['#ffbe0b', '#fb5607']
@@ -29,11 +26,6 @@ export const StartView = () => {
       <div className="flex gap-4 justify-end">
         <Avatar avatar={avatar} avatarBg={avatarBG} />
       </div>
-      <Btn.Basic text="open please" onClick={() => setOpen(true)} />
-
-      <Modal open={open} setOpen={setOpen}>
-        <p>paragraph</p>
-      </Modal>
     </>
   )
 }

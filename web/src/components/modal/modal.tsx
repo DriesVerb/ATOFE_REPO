@@ -19,9 +19,6 @@ export const Modal = (props: ModalProps) => {
         >
           <div className="modal-box">
             {children}
-            <p className="py-4">
-              Press ESC key or click the button below to close
-            </p>
             <Btn.Basic onClick={() => setOpen(false)} text="close"/>
           </div>
         </dialog>

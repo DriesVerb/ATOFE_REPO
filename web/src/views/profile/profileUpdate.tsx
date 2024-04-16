@@ -6,11 +6,13 @@ import { useState } from 'react'
 import { EmojiPicker, PickerEmoji } from '#/components/emojiPicker/emojiPicker'
 import { Emoji } from '#/elements/emojis/emoji/emoji'
 import { Modal } from '#/components/modal/modal'
+import clsx from 'clsx'
 
 export const UpdateProfileView = () => {
   const { data: user, isLoading } = useGetProfileMe()
   const [open, setOpen] = useState(false)
-  const [color, setColor] = useState('')
+  const [color1, setColor1] = useState('')
+  const [color2, setColor2] = useState('')
   const [select, setSelect] = useState('')
   const [emoji, setEmoji] = useState<PickerEmoji>()
 
@@ -25,6 +27,9 @@ export const UpdateProfileView = () => {
     setSelect(avatarOption)
   }
 
+  const classInput1 = clsx(`badge bg-[${avatarBg[1]}]`)
+  const classInput2 = clsx(`badge bg-[${avatarBg[0]}]`)
+
   return (
     <>
       <div>
@@ -32,14 +37,25 @@ export const UpdateProfileView = () => {
         <Avatar avatarBg={avatarBg} avatar={avatar} />
         <p>{emoji?.native}</p>
         <section>
-          <Emoji code={avatar} />
-          <Btn.Icon onClick={() => handleSelect("avatar")}>
+          <div>
+            <Emoji code={avatar} />
+          </div>
+          <Btn.Icon onClick={() => handleSelect('avatar')}>
             <Ico.EditGear />
           </Btn.Icon>
         </section>
-        <Form.Text label="#1 color" placeholdertext="#ffffff" />
-        <Form.Text label="#2 color" placeholdertext="#ffffff" />
-        <ColorPicker onPick={setColor} />
+        <section>
+          <div className={classInput1}>color 1</div>
+          <Btn.Icon onClick={() => handleSelect('color1')}>
+            <Ico.EditGear />
+          </Btn.Icon>
+        </section>
+        <section>
+          <div className={classInput2}>color 2</div>
+          <Btn.Icon onClick={() => handleSelect('color2')}>
+            <Ico.EditGear />
+          </Btn.Icon>
+        </section>
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Hello!</h3>
@@ -58,7 +74,17 @@ export const UpdateProfileView = () => {
         {select === 'avatar' && (
           <div>
             <Emoji code={emoji?.native!} />
-              <EmojiPicker onPick={setEmoji} />
+            <EmojiPicker onPick={setEmoji} />
+          </div>
+        )}
+        {select === 'color1' && (
+          <div>
+            <ColorPicker onPick={setColor1} />
+          </div>
+        )}
+        {select === 'color2' && (
+          <div>
+            <ColorPicker onPick={setColor2} />
           </div>
         )}
       </Modal>
