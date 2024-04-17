@@ -68,3 +68,20 @@ export const updateProfile = async (body: any) => {
 
   return { message: 'Updated Profile' }
 }
+
+export const findProfile = async (username: string) => {
+  const prisma = getPrisma()
+
+  if (!username) {
+    throw new Error('Request did not contain username')
+  }
+
+  try {
+    const user = await prisma.user.findUnique({ where: { username } })
+    if (!user) throw new Error('Cannot find username')
+    const profile = prisma.profile.findUnique({ where: { userId: user.id } })
+    return profile
+  } catch (error) {
+    logger.error(error)
+  }
+}

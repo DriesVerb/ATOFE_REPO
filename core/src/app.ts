@@ -18,15 +18,18 @@ const publicRouter = express.Router()
 publicRouter.get('/v1/users/', user.getAll)
 publicRouter.post('/v1/user/register', asyncHandler(user.register))
 publicRouter.post('/v1/user/login', asyncHandler(user.login))
+publicRouter.get('/v1/user/profile/:username', asyncHandler(user.profile))
 
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
+
 
 const userRouter = express.Router()
 userRouter.use(authenticateUser)
 userRouter.get('/v1/profile/me', asyncHandler(profile.me))
 userRouter.post('/v1/profile/create', asyncHandler(profile.create))
-userRouter.post('/v1/verify', asyncHandler(user.verify))
 userRouter.patch('/v1/profile/update', asyncHandler(profile.update))
+
+userRouter.post('/v1/verify', asyncHandler(user.verify))
 
 export const app: Application = express()
 app.use(express.json())
