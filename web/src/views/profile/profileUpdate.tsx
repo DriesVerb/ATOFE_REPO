@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-
 import { Btn, Ico, Txt } from '#/elements'
 import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
@@ -15,7 +13,7 @@ export const UpdateProfileView = () => {
   const [open, setOpen] = useState(false)
   const [select, setSelect] = useState('')
   const [color1, setColor1] = useState('')
-  const [color3, setColor2] = useState('')
+  const [color2, setColor2] = useState('')
   const [emoji, setEmoji] = useState<PickerEmoji>()
 
   const updateProfile = useProfileUpdate()
@@ -31,14 +29,18 @@ export const UpdateProfileView = () => {
     setSelect(avatarOption)
   }
 
-  const classInput1 = clsx(`badge bg-[${avatarBg[1]}]`)
-  const classInput2 = clsx(`badge bg-[${avatarBg[0]}]`)
-
   const onEmojiChange = (emoji: string) => {
-    console.log("treigger")
     updateProfile.mutate({
       avatar: emoji,
     })
+  }
+
+  const onColorChange = (color: string, index: number) => {
+    avatarBg[index] = color
+    updateProfile.mutate({
+      avatarBg: avatarBg,
+    })
+    setOpen(false)
   }
 
   return (
@@ -46,23 +48,26 @@ export const UpdateProfileView = () => {
       <div>
         <Txt.H2 text="Change Avatar" />
         <Avatar avatarBg={avatarBg} avatar={avatar} />
-        <p>{emoji?.native}</p>
-        <section>
-          <div>
-            <Emoji code={avatar} />
+          <section className={'flex justify-between'}>
+            <div>
+              <Emoji code={avatar} />
+            </div>
+            <Btn.Icon onClick={() => handleSelect('avatar')}>
+              <Ico.EditGear />
+            </Btn.Icon>
+          </section>
+        <section className={'flex justify-between'}>
+          <div style={{ backgroundColor: avatarBg[0] }} className={'badge'}>
+            color 1
           </div>
-          <Btn.Icon onClick={() => handleSelect('avatar')}>
-            <Ico.EditGear />
-          </Btn.Icon>
-        </section>
-        <section>
-          <div className={classInput1}>color 1</div>
           <Btn.Icon onClick={() => handleSelect('color1')}>
             <Ico.EditGear />
           </Btn.Icon>
         </section>
-        <section>
-          <div className={classInput2}>color 2</div>
+        <section className={'flex justify-between'}>
+          <div style={{ backgroundColor: avatarBg[1] }} className={'badge'}>
+            color 2
+          </div>
           <Btn.Icon onClick={() => handleSelect('color2')}>
             <Ico.EditGear />
           </Btn.Icon>
@@ -86,17 +91,28 @@ export const UpdateProfileView = () => {
           <div>
             <Emoji code={emoji?.native!} />
             <EmojiPicker onPick={setEmoji} />
-            <Btn.Basic text="update Emoji" onClick={() => onEmojiChange(emoji?.native!)} />
+            <Btn.Basic
+              text="update Emoji"
+              onClick={() => onEmojiChange(emoji?.native!)}
+            />
           </div>
         )}
         {select === 'color1' && (
           <div>
             <ColorPicker onPick={setColor1} />
+            <Btn.Basic
+              text="update color 1"
+              onClick={() => onColorChange(color1, 0)}
+            />
           </div>
         )}
         {select === 'color2' && (
           <div>
             <ColorPicker onPick={setColor2} />
+            <Btn.Basic
+              text="update color 1"
+              onClick={() => onColorChange(color2, 1)}
+            />
           </div>
         )}
       </Modal>
