@@ -1,4 +1,5 @@
 export const cacheKeys = {
   emojiRan: "emoji-ran",
   profileMe: 'profile-me',
+  profileUsername: "profile-username"
 } as const

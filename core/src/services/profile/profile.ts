@@ -83,5 +83,6 @@ export const findProfile = async (username: string) => {
     return profile
   } catch (error) {
     logger.error(error)
+    throw new Error("cannot find username")
   }
 }
