@@ -54,6 +54,16 @@ export const P = (props: TextClassProps) => {
   )
 }
 
+export const Label = (props: TextClassProps) => {
+  const { children, ngclass } = props
+
+  return (
+    <>
+      <label className={`text-xs sm:text-sm font-bold md:text-base lg:text-lg ${ngclass}`}>{children}</label>
+    </>
+  )
+}
+
 export const Small = (props: TextClassProps) => {
   const { children, ngclass } = props
 
