@@ -1,5 +1,7 @@
-import { useGetProfileUsername } from "#/api/user/hooks/query/getProfileUsername"
-import { useParams } from "wouter"
+import { useGetProfileUsername } from '#/api/user/hooks/query/getProfileUsername'
+import { Avatar } from '#/components/profile/avatar/avatar'
+import { Txt } from '#/elements'
+import { useParams } from 'wouter'
 
 export const ProfileUsernameView = () => {
   const params = useParams()
@@ -8,17 +10,30 @@ export const ProfileUsernameView = () => {
 
   if (!username) {
     return (
-    <div><p>hello</p></div>
+      <div>
+        <p>hello</p>
+      </div>
     )
   }
 
-  const {data} = useGetProfileUsername(username)
+  const { data, isLoading } = useGetProfileUsername(username)
 
-  console.log(data)
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading</p>
+      </div>
+    )
+  }
+
+  const { avatar, avatarBg, bio } = data
 
   return (
-    <div>
-      <p>hello {username}</p>
+    <div className={"flex flex-col"}>
+      <Txt.H1 text={username} />
+      <Avatar avatar={avatar} avatarBg={avatarBg} />
+      <Txt.Label>Bio:</Txt.Label>
+      <Txt.P>{bio}</Txt.P>
     </div>
   )
 }
