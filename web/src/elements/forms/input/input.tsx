@@ -51,3 +51,26 @@ export const Text = React.forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+
+export const TextArea = React.forwardRef<HTMLTextAreaElement, InputProps>(
+  (props, ref) => {
+     
+    const {
+      label,
+      value,
+      placeholdertext,
+      classname,
+      error,
+      variant = 'primary',
+      type = 'text',
+    } = props
+
+
+    
+    return (
+      <>
+        <textarea className="textarea textarea-bordered" value={value} ref={ref}/>
+      </>
+    )
+  }
+)

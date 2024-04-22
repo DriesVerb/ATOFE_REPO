@@ -1,4 +1,4 @@
-import { Btn, Ico, Txt } from '#/elements'
+import { Btn, Form, Ico, Txt } from '#/elements'
 import { useGetProfileMe } from '#/api/profile/hooks/query/useProfileMe'
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { ColorPicker } from '#/components/colorPicker/colorPicker'
@@ -22,7 +22,7 @@ export const UpdateProfileView = () => {
 
   const profile = user?.profile
 
-  const { avatar, avatarBg } = profile
+  const { avatar, avatarBg, bio } = profile
 
   const handleSelect = (avatarOption: string) => {
     setOpen(true)
@@ -45,7 +45,7 @@ export const UpdateProfileView = () => {
 
   return (
     <>
-      <div>
+      <main>
         <Txt.H2 text="Change Avatar" />
         <Avatar avatarBg={avatarBg} avatar={avatar} />
           <section className={'flex justify-between'}>
@@ -72,7 +72,12 @@ export const UpdateProfileView = () => {
             <Ico.EditGear />
           </Btn.Icon>
         </section>
-      </div>
+        <section>
+
+          <Form.TextArea label="write your profile bio" placeholdertext="write your biography" value={bio} />
+          
+        </section>
+      </main>
       <Modal open={open} setOpen={setOpen}>
         {select === 'avatar' && (
           <div>
