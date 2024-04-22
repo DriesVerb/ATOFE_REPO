@@ -5,10 +5,15 @@ interface InputProps {
   placeholdertext: string
   label: string
   error?: string
+  defaultValue?: string
   type?: string
   variant?: string
   value?: string
   classname?: string
+}
+
+interface TextAreaProps extends InputProps {
+  onBlur?: (e: React.FormEvent<HTMLTextAreaElement>) => void
 }
 
 export const Text = React.forwardRef<HTMLInputElement, InputProps>(
@@ -52,24 +57,20 @@ export const Text = React.forwardRef<HTMLInputElement, InputProps>(
   }
 )
 
-export const TextArea = React.forwardRef<HTMLTextAreaElement, InputProps>(
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (props, ref) => {
-     
-    const {
-      label,
-      value,
-      placeholdertext,
-      classname,
-      error,
-      variant = 'primary',
-      type = 'text',
-    } = props
+    const { label, value, onBlur } = props
 
-
-    
     return (
       <>
-        <textarea className="textarea textarea-bordered" value={value} ref={ref}/>
+        <textarea
+          aria-label={label}
+          className="textarea textarea-bordered text-xs md:text-lg"
+          value={value}
+          ref={ref}
+          onBlur={onBlur}
+          {...props}
+        />
       </>
     )
   }

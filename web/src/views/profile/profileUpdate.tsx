@@ -43,19 +43,26 @@ export const UpdateProfileView = () => {
     setOpen(false)
   }
 
+  const onBioChange = (bio: string) => {
+    updateProfile.mutate({
+      bio,
+    })
+  }
+
   return (
     <>
-      <main>
-        <Txt.H2 text="Change Avatar" />
+      <main className="flex flex-col gap-y-3 md:gap-y-5">
+        <Txt.H2 text="Update profile" />
+        <Txt.H3 text="Change Avatar" />
         <Avatar avatarBg={avatarBg} avatar={avatar} />
-          <section className={'flex justify-between'}>
-            <div>
-              <Emoji code={avatar} />
-            </div>
-            <Btn.Icon onClick={() => handleSelect('avatar')}>
-              <Ico.EditGear />
-            </Btn.Icon>
-          </section>
+        <section className={'flex justify-between'}>
+          <div>
+            <Emoji code={avatar} />
+          </div>
+          <Btn.Icon onClick={() => handleSelect('avatar')}>
+            <Ico.EditGear />
+          </Btn.Icon>
+        </section>
         <section className={'flex justify-between'}>
           <div style={{ backgroundColor: avatarBg[0] }} className={'badge'}>
             color 1
@@ -73,9 +80,13 @@ export const UpdateProfileView = () => {
           </Btn.Icon>
         </section>
         <section>
-
-          <Form.TextArea label="write your profile bio" placeholdertext="write your biography" value={bio} />
-          
+          <Txt.H3 text="Change Bio" />
+          <Form.TextArea
+            label="write your profile bio"
+            placeholdertext="write your biography"
+            defaultValue={bio}
+            onBlur={(e) => onBioChange(e.currentTarget.value)}
+          />
         </section>
       </main>
       <Modal open={open} setOpen={setOpen}>
