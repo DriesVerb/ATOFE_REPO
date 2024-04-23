@@ -1,5 +1,6 @@
 import { Link } from 'wouter'
 import { useAuthStore } from '#/store/auth'
+import { Txt } from '#/elements'
 
 export const Header = () => {
   const loggedIn = useAuthStore((state) => state.loggedIn)
@@ -56,8 +57,9 @@ export const Header = () => {
           </ul>
         </div>
       </div>
-      <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Atofe [beta]</a>
+      <div className="navbar-center flex flex-col">
+        <a href="/" className="btn btn-ghost text-xl pb-2">Atofe [beta]</a>
+        <Txt.Small>A Tale of Five Emojis</Txt.Small>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

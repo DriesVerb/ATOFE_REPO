@@ -6,6 +6,9 @@ export default {
     'node_modules/react-daisyui/dist/**/*.js',
   ],
   theme: {
+    fontFamily: {
+      story: ["Merri"]
+    },
     extend: {},
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],

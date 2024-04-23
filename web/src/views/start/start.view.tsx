@@ -10,7 +10,7 @@ export const StartView = () => {
   return (
     <>
       <StoryCta classname="col-span-1 md:col-span-2" />
-      <Txt.P ngclass="col-span-1 md:col-span-2">
+      <Txt.P ngclass="col-span-1 md:col-span-2 font-story">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
         exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
