@@ -6,10 +6,10 @@ export const MainContainer = () => {
       className="px-1.5
       grid
       grid-cols-1
-      md:grid-cols-4
       min-h-screen 
+      min-w-full
       md:gap-3
-      lg:max-w-screen-2xl
+      md:grid-cols-4
       auto-rows-max"
     >
       <MainRouter />

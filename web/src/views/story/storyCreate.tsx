@@ -61,8 +61,8 @@ const story = {
 export const StoryCreate = () => {
   return (
     <>
+        <Txt.H2 ngclass="col-span-1 md:col-span-5"  text="Title" />
       <div className="col-span-1 md:col-span-5">
-        <Txt.H2 text="Title" />
         <Editor story={story} />
       </div>
     </>
