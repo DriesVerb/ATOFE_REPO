@@ -5,6 +5,8 @@ import Text from '@tiptap/extension-text'
 import { Btn } from '#/elements'
 import { useState } from 'react'
 
+import styles from './editor.module.css'
+
 interface EditorProps {
   story: JSONContent[] | string
 }
@@ -19,6 +21,8 @@ export const Editor = (props: EditorProps) => {
     extensions: [Document, Paragraph, Text],
     content,
   })
+  
+
 
   const json = editor?.getJSON()
 
@@ -32,7 +36,7 @@ export const Editor = (props: EditorProps) => {
   return (
     <article>
       <Btn.Basic text="Save Story" onClick={() => handleSave()} />
-      <EditorContent editor={editor} />
+      <EditorContent className={styles.tiptap} editor={editor} />
     </article>
   )
 }
