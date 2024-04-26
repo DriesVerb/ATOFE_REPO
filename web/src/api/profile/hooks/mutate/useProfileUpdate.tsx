@@ -1,5 +1,5 @@
 import { ProfileUpdate } from '#/types/profile'
-import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { patchUpdateProfile } from '../../func/profileUpdate'
 import { AxiosError } from 'axios'
 import { cacheKeys } from '#/utils/const/cacheKeys'
