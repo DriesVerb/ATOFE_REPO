@@ -66,7 +66,9 @@ export const StoryCreate = () => {
   return (
     <>
       <Txt.H2 ngclass="col-span-1 md:col-span-5" text="Title" />
-      <EmojiRow emojis={emojis} />
+      <section className="col-span-1 md:col-span-5 flex justify-center">
+        <EmojiRow emojis={emojis} />
+      </section>
       <div className="col-span-1 md:col-span-5">
         <Editor story={story} />
       </div>
