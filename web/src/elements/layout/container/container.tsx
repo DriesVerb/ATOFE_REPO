@@ -10,6 +10,8 @@ export const MainContainer = () => {
       min-w-full
       md:gap-3
       md:grid-cols-4
+      lg:px-36
+      xl:px-52
       auto-rows-max"
     >
       <MainRouter />

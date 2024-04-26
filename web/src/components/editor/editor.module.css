@@ -1,0 +1,7 @@
+.tiptap {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  cursor:horizontal-text;
+  padding: 3px;
+}
+
