@@ -9,7 +9,7 @@ interface StoryCtaProps {
 }
 
 export const StoryCta = (props: StoryCtaProps) => {
-  const { classname } = props
+  const {  classname } = props
   const { data: emojis, refetch } = useGetRanEmojis(5)
   const setEmojis = useEmojiStore((state) => state.setEmojis)
 
@@ -17,7 +17,7 @@ export const StoryCta = (props: StoryCtaProps) => {
 
   const onHandleWrite = () => {
     setEmojis(emojis)
-    navigate("/story/create")
+    navigate("/story/drafts")
   }
 
   return (

@@ -7,12 +7,14 @@ import { LogoutRoute } from './auth/logout'
 import { ProfileUpdateRoute } from './profile/profileUpdate'
 import { ProfileUsernameRouter } from './profile/profileUsername'
 import { StoryCreateRoute } from './story/storyCreate'
+import { DraftsRoute } from './story/drafts'
 
 export const MainRouter = () => {
   return (
     <Router>
       <BaseRoute />
       <LoginRoute />
+      <DraftsRoute />
       <SignUpRoute />
       <LogoutRoute />
       <ProfileMeRoute />

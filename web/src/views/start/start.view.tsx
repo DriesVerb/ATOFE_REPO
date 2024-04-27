@@ -1,6 +1,6 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
-import { StoryCta } from './components/StoryCta'
 import { Txt } from '#/elements'
+import { StoryCta } from './components/StoryCta'
 
 export const StartView = () => {
 
