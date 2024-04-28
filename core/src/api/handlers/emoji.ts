@@ -2,7 +2,7 @@ import { RequestHandler } from 'express'
 import { getRandomNumChar } from '../../services/emoji/emoji'
 import { logger } from '../../utils/logger'
 import { reqHan } from '../../utils/consts/loggingMessage'
-import { extractCharacters } from '../../testData/emoji.data'
+import {  emojisRawData } from '../../testData/emoji.data'
 
 export const listRan: RequestHandler = async (req, res) => {
   logger.info(reqHan(`Random Emojis amount: ${req.params.amount}`))
@@ -11,7 +11,7 @@ export const listRan: RequestHandler = async (req, res) => {
 }
 
 export const testData: RequestHandler = async (_req, res) => {
-  const response = extractCharacters()
+  const response = emojisRawData
   res.send(response)
 }
 

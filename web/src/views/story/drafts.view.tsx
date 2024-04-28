@@ -1,5 +1,6 @@
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
 import { Btn, Txt } from '#/elements'
+import { EmojiType } from '#/types/global/common'
 import { cacheKeys } from '#/utils/const/cacheKeys'
 import { routes } from '#/utils/const/routes'
 import { useQueryClient } from '@tanstack/react-query'
@@ -9,12 +10,12 @@ import { navigate } from 'wouter/use-browser-location'
 export const DraftsView = () => {
   const queryClient = useQueryClient()
   const [emojis, setEmojis] = useState(
-    queryClient.getQueryData([cacheKeys.emojiRan]) as string[]
+    queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[]
   )
 
   const onRenew = async () => {
     await queryClient.refetchQueries({ queryKey: [cacheKeys.emojiRan] })
-    setEmojis(queryClient.getQueryData([cacheKeys.emojiRan]) as string[])
+    setEmojis(queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[])
   }
 
   const onWriteHandle = () => {

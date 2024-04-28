@@ -1,13 +1,13 @@
-import { characterData } from '../../testData/emoji.data'
+import { emojisRawData } from '../../testData/emoji.data'
 
 export const getRandomNumChar = (amount: number): string[] => {
-  const characters = characterData
+  const emojis = emojisRawData
   const emojiOutput = new Set()
 
   while (emojiOutput.size < amount) {
-    const randomNum = Math.trunc(Math.random() * characters.length)
+    const randomNum = Math.trunc(Math.random() * emojis.length)
 
-    const currentOutput = characters[randomNum]
+    const currentOutput = emojis[randomNum]
 
     emojiOutput.add(currentOutput)
   }

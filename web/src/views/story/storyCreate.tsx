@@ -1,7 +1,7 @@
 import { Editor } from '#/components/editor/editor'
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
 import { Txt } from '#/elements'
-import { useEmojiStore } from '#/store/emoji'
+import { EmojiType } from '#/types/global/common'
 import { cacheKeys } from '#/utils/const/cacheKeys'
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -64,7 +64,7 @@ const story = {
 
 export const StoryCreate = () => {
   const queryClient = useQueryClient()
-  const emojis = queryClient.getQueryData([cacheKeys.emojiRan]) as string[]
+  const emojis = queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[]
  
   return (
     <>
