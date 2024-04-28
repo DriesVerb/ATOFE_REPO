@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export type Children = ReactNode
 
-export type Emoji = {
+export type EmojiType = {
   character: string,
   info: string
 }
