@@ -22,6 +22,7 @@ publicRouter.get('/v1/user/profile/:username', asyncHandler(user.profile))
 
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
+publicRouter.get('/v1/test/emojis', emoji.testData)
 
 const userRouter = express.Router()
 userRouter.use(authenticateUser)

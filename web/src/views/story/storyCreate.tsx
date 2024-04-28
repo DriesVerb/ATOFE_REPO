@@ -2,6 +2,8 @@ import { Editor } from '#/components/editor/editor'
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
 import { Txt } from '#/elements'
 import { useEmojiStore } from '#/store/emoji'
+import { cacheKeys } from '#/utils/const/cacheKeys'
+import { useQueryClient } from '@tanstack/react-query'
 
 const story = {
   type: 'doc',
@@ -61,8 +63,9 @@ const story = {
 }
 
 export const StoryCreate = () => {
-  const emojis = useEmojiStore((state) => state.emojis)
-
+  const queryClient = useQueryClient()
+  const emojis = queryClient.getQueryData([cacheKeys.emojiRan]) as string[]
+ 
   return (
     <>
       <Txt.H2 ngclass="col-span-1 md:col-span-5" text="Title" />
