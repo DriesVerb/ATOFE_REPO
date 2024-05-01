@@ -1,6 +1,7 @@
 import { Avatar } from '#/components/profile/avatar/avatar'
 import { StoryCta } from '#/components/storyCta/StoryCta'
 import { Txt } from '#/elements'
+import { routes } from '#/utils/const/routes'
 
 export const StartView = () => {
 
@@ -9,7 +10,7 @@ export const StartView = () => {
 
   return (
     <>
-      <StoryCta navigateTo="/story/drafts" classname="col-span-1 md:col-span-2" />
+      <StoryCta navigateTo={routes.story.drafts} classname="col-span-1 md:col-span-2" />
       <Txt.P ngclass="col-span-1 md:col-span-2 font-story">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse

@@ -2,8 +2,9 @@ import express, { Application } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 
-import * as emoji from './api/handlers/emoji'
 import * as user from './api/handlers/user'
+import * as emoji from './api/handlers/emoji'
+import * as story from './api/handlers/story'
 import * as profile from './api/handlers/profile'
 
 import { frontendPort } from './utils/dotenv'
@@ -26,11 +27,13 @@ publicRouter.get('/v1/test/emojis', emoji.testData)
 
 const userRouter = express.Router()
 userRouter.use(authenticateUser)
+userRouter.post('/v1/verify', asyncHandler(user.verify))
+
 userRouter.get('/v1/profile/me', asyncHandler(profile.me))
 userRouter.post('/v1/profile/create', asyncHandler(profile.create))
 userRouter.patch('/v1/profile/update', asyncHandler(profile.update))
 
-userRouter.post('/v1/verify', asyncHandler(user.verify))
+userRouter.post('/v1/story/create', asyncHandler(story.create))
 
 export const app: Application = express()
 app.use(express.json())
