@@ -14,33 +14,36 @@ datasource db {
 }
 
 model user {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  username String  @unique
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  username String   @unique
   password String
-  profile profile?
+  profile  profile?
+  Story    Story[]
 }
 
 model profile {
-  id        Int    @id @default(autoincrement())
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
   bio       String
   avatar    String
   avatarBg  String[] @map("avatar_bg")
-  user      user   @relation(fields: [userId], references: [id])
-  userId    Int    @unique
+  user      user     @relation(fields: [userId], references: [id])
+  userId    Int      @unique
 }
 
 model Story {
-  id             Int               @id @default(autoincrement())
-  createdAt      DateTime          @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt      DateTime          @updatedAt @map("updated_at") @db.Timestamptz
-  publishedAt    DateTime?         @map("published_at") @db.Timestamptz
-  deletedAt      DateTime?         @map("deleted_at") @db.Timestamptz
-  emojis         String[]
-  author         String
-  user           user              @relation(fields: [author], references: [username])
-  story          Json
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  publishedAt DateTime? @map("published_at") @db.Timestamptz
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz
+  emojis      String[]
+  author      String
+  user        user      @relation(fields: [author], references: [username])
+  title       String
+  summary     String
+  story       Json
 
   @@map("story")
-} 
+}
