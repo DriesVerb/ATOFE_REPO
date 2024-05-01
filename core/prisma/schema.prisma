@@ -30,3 +30,17 @@ model profile {
   user      user   @relation(fields: [userId], references: [id])
   userId    Int    @unique
 }
+
+model Story {
+  id             Int               @id @default(autoincrement())
+  createdAt      DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime          @updatedAt @map("updated_at") @db.Timestamptz
+  publishedAt    DateTime?         @map("published_at") @db.Timestamptz
+  deletedAt      DateTime?         @map("deleted_at") @db.Timestamptz
+  emojis         String[]
+  author         String
+  user           user              @relation(fields: [author], references: [username])
+  story          Json
+
+  @@map("story")
+} 
