@@ -10,8 +10,8 @@ export const StartView = () => {
 
   return (
     <>
-      <StoryCta navigateTo={routes.story.drafts} classname="col-span-1 md:col-span-2" />
-      <Txt.P ngclass="col-span-1 md:col-span-2 font-story">
+      <StoryCta navigateTo={routes.story.drafts} classname="col-span-1 md:col-span-2 overflow-hidden" />
+      <Txt.P ngclass="col-span-1 md:col-span-2 font-story overflow-hidden">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
         exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit

@@ -12,7 +12,8 @@ export const MainContainer = () => {
       md:grid-cols-4
       lg:px-36
       xl:px-52
-      auto-rows-max"
+      auto-rows-max
+      "
     >
       <MainRouter />
     </main>
