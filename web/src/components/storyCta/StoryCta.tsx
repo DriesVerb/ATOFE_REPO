@@ -1,23 +1,30 @@
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
-import { useGetRanEmojis } from '#/api/emoji/hooks/query/useGetRanEmoji'
 import { Btn } from '#/elements'
-import { useEmojiStore } from '#/store/emoji'
 import { navigate } from 'wouter/use-browser-location'
+import { useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
+import { cacheKeys } from '#/utils/const/cacheKeys'
+import { EmojiType } from '#/types/global/common'
 
 interface StoryCtaProps {
+  navigateTo: string
   classname?: string
 }
 
 export const StoryCta = (props: StoryCtaProps) => {
-  const {  classname } = props
-  const { data: emojis, refetch } = useGetRanEmojis(5)
-  const setEmojis = useEmojiStore((state) => state.setEmojis)
+  const { navigateTo,  classname } = props
+  const queryClient = useQueryClient()
+  const [emojis, setEmojis] = useState(
+    queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[]
+  )
 
-  const onRenew = () => refetch()
+  const onRenew = async () => {
+    await queryClient.refetchQueries({ queryKey: [cacheKeys.emojiRan] })
+    setEmojis(queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[])
+  }
 
   const onHandleWrite = () => {
-    setEmojis(emojis)
-    navigate("/story/drafts")
+    navigate(navigateTo)
   }
 
   return (
