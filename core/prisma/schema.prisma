@@ -38,11 +38,11 @@ model Story {
   updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
   publishedAt DateTime? @map("published_at") @db.Timestamptz
   deletedAt   DateTime? @map("deleted_at") @db.Timestamptz
-  emojis      String[]
   author      String
   user        user      @relation(fields: [author], references: [username])
   title       String
   summary     String
+  emojis      Json 
   story       Json
 
   @@map("story")
