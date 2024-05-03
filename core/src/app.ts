@@ -21,6 +21,8 @@ publicRouter.post('/v1/user/register', asyncHandler(user.register))
 publicRouter.post('/v1/user/login', asyncHandler(user.login))
 publicRouter.get('/v1/user/profile/:username', asyncHandler(user.profile))
 
+publicRouter.get('/v1/story/:id', asyncHandler(story.getById))
+
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 publicRouter.get('/v1/test/emojis', emoji.testData)

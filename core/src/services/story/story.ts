@@ -1,5 +1,6 @@
-import { Story } from "@prisma/client"
-import { getPrisma } from "../../databases/prisma"
+import { Story } from '@prisma/client'
+import { getPrisma } from '../../databases/prisma'
+import { logger } from '../../utils/logger'
 
 export const createStory = async (body: any) => {
   const prisma = getPrisma()
@@ -16,15 +17,30 @@ export const createStory = async (body: any) => {
         title: title,
         emojis: JSON.stringify(emojis),
         summary: summary,
-        story: JSON.stringify(story)
-      }
+        story: JSON.stringify(story),
+      },
     })
-
   } catch (error) {
     console.log(error)
-    throw new Error("Could not create story")
+    throw new Error('Could not create story')
   }
 
-
   return { message: 'created story' }
+}
+
+export const storyById = async (id: string) => {
+  const prisma = getPrisma()
+
+  if (!id) {
+    throw new Error('Request did not contain id')
+  }
+
+  try {
+    const story = await prisma.story.findUnique({ where: { id: Number(id) } })
+    if (!id) throw new Error('Cannot find story')
+    return story
+  } catch (error) {
+    logger.error(error)
+    throw new Error('Cannot find story')
+  }
 }

@@ -8,6 +8,7 @@ import { ProfileUpdateRoute } from './profile/profileUpdate'
 import { ProfileUsernameRouter } from './profile/profileUsername'
 import { StoryCreateRoute } from './story/storyCreate'
 import { DraftsRoute } from './story/drafts'
+import { StoryByIdRoute } from './story/storyById'
 
 export const MainRouter = () => {
   return (
@@ -17,10 +18,11 @@ export const MainRouter = () => {
       <DraftsRoute />
       <SignUpRoute />
       <LogoutRoute />
+      <StoryByIdRoute />
       <ProfileMeRoute />
+      <StoryCreateRoute />
       <ProfileUpdateRoute />
       <ProfileUsernameRouter />
-      <StoryCreateRoute />
     </Router>
   )
 }
