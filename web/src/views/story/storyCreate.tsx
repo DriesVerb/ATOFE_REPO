@@ -1,4 +1,4 @@
-import { Editor } from '#/components/editor/editor'
+import { Editor, EditorComponent } from '#/components/editor/editor'
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
 import { Txt } from '#/elements'
 import { EmojiType } from '#/types/global/common'
@@ -73,7 +73,7 @@ export const StoryCreate = () => {
         <EmojiRow emojis={emojis} />
       </section>
       <div className="col-span-1 md:col-span-5">
-        <Editor story={story} />
+        <EditorComponent story={story} />
       </div>
     </>
   )
