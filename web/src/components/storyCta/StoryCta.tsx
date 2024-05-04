@@ -27,6 +27,8 @@ export const StoryCta = (props: StoryCtaProps) => {
     navigate(navigateTo)
   }
 
+  console.log(emojis)
+
   return (
     <div className={`flex flex-col items-center gap-4 ${classname}`}>
       <EmojiRow emojis={emojis} />

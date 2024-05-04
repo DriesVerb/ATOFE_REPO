@@ -25,8 +25,6 @@ export const EditorComponent = (props: EditorProps) => {
     content,
   })
 
-  console.log(html)
-
   const json = editor?.getJSON()
 
   const handleSave = () => {

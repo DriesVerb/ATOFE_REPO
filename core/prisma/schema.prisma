@@ -32,6 +32,7 @@ model profile {
   userId    Int      @unique
 }
 
+
 model Story {
   id          Int       @id @default(autoincrement())
   createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
@@ -44,6 +45,7 @@ model Story {
   summary     String
   emojis      Json 
   story       Json
+  html        String
 
   @@map("story")
 }

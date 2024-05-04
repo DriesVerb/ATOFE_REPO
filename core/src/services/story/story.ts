@@ -8,7 +8,7 @@ export const createStory = async (body: any) => {
 
   const { username } = token
 
-  const { summary, story, title, emojis } = body as Story
+  const { summary, story, title, emojis, html } = body as Story
 
   try {
     await prisma.story.create({
@@ -18,6 +18,7 @@ export const createStory = async (body: any) => {
         emojis: JSON.stringify(emojis),
         summary: summary,
         story: JSON.stringify(story),
+        html: html
       },
     })
   } catch (error) {
