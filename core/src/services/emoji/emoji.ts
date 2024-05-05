@@ -1,6 +1,7 @@
 import { emojisRawData } from '../../testData/emoji.data'
+import { EmojiRaw } from '../../types/emoji/emoji.type'
 
-export const getRandomNumChar = (amount: number): string[] => {
+export const getRandomNumChar = (amount: number): EmojiRaw[] => {
   const emojis = emojisRawData
   const emojiOutput = new Set()
 
@@ -12,5 +13,5 @@ export const getRandomNumChar = (amount: number): string[] => {
     emojiOutput.add(currentOutput)
   }
 
-  return [...emojiOutput] as string[]
+  return [...emojiOutput] as EmojiRaw[]
 }

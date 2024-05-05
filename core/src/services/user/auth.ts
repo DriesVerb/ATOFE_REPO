@@ -66,12 +66,14 @@ export const registerUser = async (body: any) => {
     await prisma.profile.create({
       data: {
         bio: bio,
-        avatar: avatar[0],
+        avatar: avatar[0].character as string,
         avatarBg: avatarBg,
         userId: id,
       },
     })
   } catch (error) {
+    logger.info(error)
+    throw new Error("Cannot create new profile")
   }
 
   return { message: 'Thank You for Registering' }

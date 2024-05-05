@@ -1,5 +1,10 @@
 export type EmojiData = Emoji[]
 
+export type EmojiRaw = {
+  character: string,
+  info: string
+}
+
 export type Emoji = {
   slug: string
   character: string

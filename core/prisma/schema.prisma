@@ -20,6 +20,30 @@ model user {
   password String
   profile  profile?
   Story    Story[]
+  article  Article[]
+}
+
+model Emoji {
+  id        Int       @id @default(autoincrement())
+  character String    @unique
+  info      String
+  articles   Article[]
+  
+  @@map("emoji")
+}
+
+model Article {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  publishedAt DateTime? @map("published_at") @db.Timestamptz
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz
+  author      String
+  user        user      @relation(fields: [author], references: [username])
+  title       String
+  emoji       Emoji[]
+
+  @@map("article")
 }
 
 model profile {

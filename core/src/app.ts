@@ -5,6 +5,7 @@ import cors from 'cors'
 import * as user from './api/handlers/user'
 import * as emoji from './api/handlers/emoji'
 import * as story from './api/handlers/story'
+import * as article from './api/handlers/testArticle/article'
 import * as profile from './api/handlers/profile'
 
 import { frontendPort } from './utils/dotenv'
@@ -26,6 +27,8 @@ publicRouter.get('/v1/story/:id', asyncHandler(story.getById))
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
 publicRouter.get('/v1/test/emojis', emoji.testData)
+publicRouter.get('/v1/article/:id', asyncHandler(article.getById))
+
 
 const userRouter = express.Router()
 userRouter.use(authenticateUser)
@@ -36,6 +39,8 @@ userRouter.post('/v1/profile/create', asyncHandler(profile.create))
 userRouter.patch('/v1/profile/update', asyncHandler(profile.update))
 
 userRouter.post('/v1/story/create', asyncHandler(story.create))
+
+userRouter.post('/v1/test/article/create', article.create)
 
 export const app: Application = express()
 app.use(express.json())
