@@ -8,17 +8,19 @@ export const createStory = async (body: any) => {
 
   const { username } = token
 
-  const { summary, story, title, emojis, html } = body as Story
+  const { summary, story, title, html, emojis } = body
 
   try {
     await prisma.story.create({
       data: {
         author: username,
         title: title,
-        emojis: JSON.stringify(emojis),
+        emojis: {
+          connect: emojis,
+        },
         summary: summary,
         story: JSON.stringify(story),
-        html: html
+        html: html,
       },
     })
   } catch (error) {
@@ -37,7 +39,10 @@ export const storyById = async (id: string) => {
   }
 
   try {
-    const story = await prisma.story.findUnique({ where: { id: Number(id) } })
+    const story = await prisma.story.findUnique({
+      where: { id: Number(id) },
+      include: { emojis: true },
+    })
     if (!id) throw new Error('Cannot find story')
     return story
   } catch (error) {

@@ -1,7 +1,8 @@
+/*
 import { Emoji } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
 
-export const CreateArticle = async (body: any) => {
+import const CreateArticle = async (body: any) => {
   const prisma = getPrisma()
 
   const {
@@ -42,3 +43,4 @@ export const getArticleById = async (id: string)  => {
   return article
 
 }
+*/
