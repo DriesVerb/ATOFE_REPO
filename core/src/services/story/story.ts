@@ -1,4 +1,3 @@
-import { Story } from '@prisma/client'
 import { getPrisma } from '../../databases/prisma'
 import { logger } from '../../utils/logger'
 

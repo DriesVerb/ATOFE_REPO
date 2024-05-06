@@ -1,4 +1,4 @@
-import { Editor, EditorComponent } from '#/components/editor/editor'
+import { EditorComponent } from '#/components/editor/editor'
 import { EmojiRow } from '#/components/emojiRow/emojiRow'
 import { Txt } from '#/elements'
 import { EmojiType } from '#/types/global/common'

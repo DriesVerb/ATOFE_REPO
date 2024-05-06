@@ -27,9 +27,8 @@ publicRouter.get('/v1/story/:id', asyncHandler(story.getById))
 
 publicRouter.get('/v1/emoji/random/:amount', emoji.listRan)
 
-publicRouter.get('/v1/test/emojis', emoji.testData)
-
 // setup
+publicRouter.get('/v1/test/emojis', emoji.testData)
 publicRouter.get('/v1/setup/', asyncHandler(setup.allEmojis))
 publicRouter.get('/v1/setup/all', asyncHandler(setup.showAllEmojis))
 
