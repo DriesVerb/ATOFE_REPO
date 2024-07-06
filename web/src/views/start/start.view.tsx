@@ -4,13 +4,15 @@ import { Txt } from '#/elements'
 import { routes } from '#/utils/const/routes'
 
 export const StartView = () => {
-
   const avatar = '🙀'
   const avatarBG = ['#ffbe0b', '#fb5607']
 
   return (
     <>
-      <StoryCta navigateTo={routes.story.drafts} classname="col-span-1 md:col-span-2 overflow-hidden" />
+      <StoryCta
+        navigateTo={routes.story.drafts}
+        classname="col-span-1 md:col-span-2"
+      />
       <Txt.P ngclass="col-span-1 md:col-span-2 font-story overflow-hidden">
         Lorem ipsum dolor sit amet officia excepteur ex fugiat reprehenderit
         enim labore culpa sint ad nisi Lorem pariatur mollit ex esse

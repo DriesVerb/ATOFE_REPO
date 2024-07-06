@@ -1,7 +1,7 @@
 export type EmojiData = Emoji[]
 
 export type EmojiRaw = {
-  character: string,
+  character: string
   info: string
 }
 
@@ -21,5 +21,3 @@ export type Variant = {
   slug: string
   character: string
 }
-
- 
