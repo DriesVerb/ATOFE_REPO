@@ -12,7 +12,7 @@ interface StoryCtaProps {
 }
 
 export const StoryCta = (props: StoryCtaProps) => {
-  const { navigateTo,  classname } = props
+  const { navigateTo, classname } = props
   const queryClient = useQueryClient()
   const [emojis, setEmojis] = useState(
     queryClient.getQueryData([cacheKeys.emojiRan]) as EmojiType[]
